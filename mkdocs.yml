@@ -1,8 +1,7 @@
 site_name: 资产管理系统文档
 
 nav:
-  - OKOK: index.md
-  - 项目简介: intro.md
+  - 项目简介: index.md
   - 模块设计: modules.md
   - API文档: api.md
   - 数据库模型: database.md
@@ -12,3 +11,10 @@ nav:
 
 theme:
   name: material
+  features:
+    - navigation.tabs
+  palette:
+    primary: blue grey
+
+extra:
+  generator: false

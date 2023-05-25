@@ -3,6 +3,13 @@
 ### 前提
 可以把文档当作一个小项目，把这个项目的东西先用 `git clone` 复制到本地，然后就可以对文档的内容进行操作。
 
+### 安装 
+需要安装 mkdocs 和页面样式:
+
+    pip install mkdocs
+    pip install mkdocs-material
+
+
 ### 主要操作
 文档主要是在master上，把项目拉下来之后可以 
 
