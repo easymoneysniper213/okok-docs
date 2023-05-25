@@ -1,4 +1,7 @@
 site_name: 资产管理系统文档
 
+nav:
+    - 启源: index.md
+
 theme:
-  name: gitbook
+  name: material
