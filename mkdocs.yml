@@ -12,10 +12,13 @@ nav:
     - url模块: api_url.md
     - 审批单模块: api_pendingrequest.md
     - 资产模块:
+      - 资产统计模块: api_statistics.md
       - 异步任务模块: api_task.md
       - 资产模块: api_asset.md
       - 资产分类树模块: api_assettree.md
     - 日志模块: api_journal.md
+    - 飞书模块: api_feishu.md
+    - 搜索模块: api_search.md
   - 数据库模型: 
     - 数据库简介: database_intro.md
     - 用户模型: user_database.md

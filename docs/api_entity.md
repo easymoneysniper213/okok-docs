@@ -18,28 +18,29 @@
 | ------ | ---------------------- | -------------------------------------- |
 | 2      | 已经有了重名的业务实体 | 对应名字的业务实体已经存在，此操作无效 |
 
-
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
 {
   "name":"a"
 }
 ```
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
-  "code":0
-  "info":Succeed
+  "code":0,
+  "info":"Succeed"
 }
 ```
-
 </details>
+</details>
+
 
 ## 获取所有业务实体列表接口
 
@@ -59,12 +60,16 @@
 
 <details>
  <summary>示例</summary>
-
-响应
+ <details>
+  <summary>请求</summary>
+无
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
-  "code":0
+  "code":0,
   "data":[
   {
     "id":1,
@@ -78,8 +83,9 @@
 }
 
 ```
-
 </details>
+</details>
+
 
 ## 修改业务实体信息接口
 
@@ -103,26 +109,27 @@
 | 2      | 该ID的业务实体不存在 | 给出的id错误，找不到对应业务实体                               |
 | 3      | 修改信息不合理       | 检测到名字并未发生修改，或新名字对应的业务实体已经存在无法修改 |
 
-
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
 {
-  "id":1
+  "id":1,
   "name":"b"
 }
 ```
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
-  "code":0
+  "code":0,
   "info":"Succeed"
 }
 ```
-
 </details>
+</details>
+

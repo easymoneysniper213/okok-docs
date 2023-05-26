@@ -34,8 +34,8 @@
 
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
 {
@@ -48,17 +48,20 @@
   "email" :""
 }
 ```
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
   "code":0,
-  "info":Succeed,
+  "info":"Succeed",
 }
 ```
-
 </details>
+</details>
+
+
 
 ## 修改用户相关信息接口
 
@@ -85,11 +88,10 @@
 | 1      | 你无此权限                             | 系统管理员修改不属于其业务实体的角色信息       |
 | 250    | 不要尝试锁定自己！！！！！             | 锁定只能由权限更高的角色完成，自己不能锁定自己 |
 
-
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
 {
@@ -98,17 +100,19 @@
   "lock":False,
 }
 ```
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
   "code":0,
-  "info":Success,
+  "info":"Success",
 }
 ```
-
 </details>
+</details>
+
 
 ## 获取用户角色接口
 
@@ -131,22 +135,26 @@
 | 2      | 用户的会话标识符信息不正确 | 用户提供的sessionId不符合规范，如长度不为32位，包含特殊字符等 |
 | 1      | 用户还未登录               | 根据用户提供的sessionId找不到具体用户                         |
 
-
 <details>
  <summary>示例</summary>
-
-响应
+ <details>
+  <summary>请求</summary>
+        无
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
-  "code":0
+  "code":0,
   "data":{
     "character":1
   }
 }
 ```
-
 </details>
+</details>
+
 
 ## 获取全部用户列表接口
 
@@ -172,11 +180,14 @@
 | 4      | 请求的页面数超过了总页面数 | 传入的page数过大超过了总page数，无法成功返回 |
 | 4      | 请求的页面数必须为正整数   | 传入的page数小于等于0，不合法                |
 
-
 <details>
  <summary>示例</summary>
-
-响应
+ <details>
+  <summary>请求</summary>
+        无
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
@@ -184,7 +195,7 @@
   "pages":1,
   "data": [
   {
-    "id"：1
+    "id":1,
     "name": "example_user",
     "password": "password123",
     "entityName" : "aba",
@@ -206,8 +217,10 @@
   ]
 }
 ```
-
 </details>
+</details>
+
+
 
 ## 用户更改自己的密码接口
 
@@ -232,8 +245,8 @@
 
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
 {
@@ -241,17 +254,19 @@
   "newpassword":"abb"
 }
 ```
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
    "code":0,
-   "info":Succeed,
+   "info":"Succeed",
 }
 ```
-
 </details>
+</details>
+
 
 ## 用户更改自己的邮箱接口
 
@@ -277,8 +292,8 @@
 
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
 {
@@ -286,16 +301,17 @@
   "email":"xpy@163.com"
 }
 ```
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
 {
    "code":0,
-   "info":Succeed,
+   "info":"Succeed",
 }
 ```
-
+</details>
 </details>
 
 
@@ -311,3 +327,49 @@
 **接口描述**：此接口用于资产管理员获取同业务实体下所有的资产管理员
 
 `[GET] /api/asset_manager_entity/{session}/{entity_name}`
+
+
+
+## 管理员获取同业务实体全部用户接口
+
+**接口描述**：此接口用于管理员获取同业务实体下所有的用户
+
+`[GET] /api/user_entity/{session}/{entity_name}/{page}`
+
+
+
+## 一级用户获取同业务实体全部用户接口
+
+**接口描述**：此接口用于一级用户获取同业务实体下所有的用户
+
+`[GET] /api/user_entity4user/{session}/{page}`
+
+
+
+## 用户获取个人信息接口
+
+**接口描述**：此接口用于用户获取自己的个人信息
+
+`[GET] /api/cur_entity/{session}/{page}`
+
+
+## 管理员获取同部门下全部用户接口
+
+**接口描述**：此接口用于管理员获取同部门下所有的用户
+
+`[GET] /api/user_department/{session}/{department_name}/{page}`
+
+
+
+## 一级用户获取同部门下全部用户接口
+
+**接口描述**：此接口用于一级用户获取同部门下所有的用户
+
+`[GET] /api/user_department_2/{session}/{department_name}`
+
+
+## 资产管理员获取某部门下全部资产管理员接口
+
+**接口描述**：此接口用于资产管理员获取某部门下全部资产管理员
+
+`[GET] /api/managers_department/{session}/{department_name}`
