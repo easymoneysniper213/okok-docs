@@ -3,7 +3,11 @@ site_name: 资产管理系统文档
 nav:
   - 项目简介: index.md
   - API文档: api.md
-  - 数据库模型: database.md
+  - 数据库模型: 
+    - 数据库简介: database_intro.md
+    - 用户模型: user_database.md
+    - 企业模型: entity_database.md
+    - 资产模型: asset_database.md
   - 技术选型和部署: tech.md
   - 测试文档: test.md
   - 用户使用指南: user-guide.md
