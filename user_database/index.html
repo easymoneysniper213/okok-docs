@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../database_intro/">
       
       
-        <link rel="next" href="../database_intro/">
+        <link rel="next" href="../entity_database/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>API文档 - 资产管理系统文档</title>
+        <title>用户模型 - 资产管理系统文档</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api" class="md-skip">
+        <a href="#user" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              API文档
+              用户模型
             
           </span>
         </div>
@@ -174,12 +174,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../api/" class="md-tabs__link">
       API文档
     </a>
   </li>
@@ -188,13 +186,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../database_intro/" class="md-tabs__link">
+      <a href="../database_intro/" class="md-tabs__link md-tabs__link--active">
         数据库模型
       </a>
     </li>
@@ -290,21 +290,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
         API文档
       </a>
-      
     </li>
   
 
@@ -315,14 +305,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -331,7 +323,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           数据库模型
@@ -356,11 +348,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../user_database/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          用户模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         用户模型
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    用户模型User
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    第三方应用模型URL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#journal" class="md-nav__link">
+    日志模型Journal
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -462,8 +505,35 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    用户模型User
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    第三方应用模型URL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#journal" class="md-nav__link">
+    日志模型Journal
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -478,7 +548,197 @@
                   
 
 
-<h1 id="api">API 文档</h1>
+  <h1>用户模型</h1>
+
+<h2 id="user">用户模型User</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>用户的ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR(128)</td>
+<td>UNIQUE</td>
+<td>用户的名称</td>
+</tr>
+<tr>
+<td>password</td>
+<td>VARCHAR(32)</td>
+<td></td>
+<td>用户密码的MD5值</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Entity(id)</td>
+<td>用户所在的业务实体</td>
+</tr>
+<tr>
+<td>department</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Department(id)</td>
+<td>用户所在的组织</td>
+</tr>
+<tr>
+<td>character</td>
+<td>INT</td>
+<td></td>
+<td>用户的角色权限</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>BOOL</td>
+<td></td>
+<td>用户是否被锁定</td>
+</tr>
+<tr>
+<td>session</td>
+<td>VARCHAR(32)</td>
+<td></td>
+<td>已经登录用户的session_id</td>
+</tr>
+<tr>
+<td>email</td>
+<td>VARCHAR(32)</td>
+<td>UNIQUE</td>
+<td>用户的邮箱</td>
+</tr>
+<tr>
+<td>feishu_name</td>
+<td>VARCHAR</td>
+<td></td>
+<td>用户绑定的飞书用户名</td>
+</tr>
+<tr>
+<td>feishu_open_id</td>
+<td>VARCHAR</td>
+<td></td>
+<td>用户绑定的飞书用户的open_id</td>
+</tr>
+<tr>
+<td>feishu_phone</td>
+<td>VARCHAR</td>
+<td></td>
+<td>用户绑定的飞书用户手机号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="url">第三方应用模型URL</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>url</td>
+<td>VARCHAR(32)</td>
+<td>UNIQUE</td>
+<td>URL</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR(32)</td>
+<td></td>
+<td>URL名称</td>
+</tr>
+<tr>
+<td>authority_level</td>
+<td>INT</td>
+<td></td>
+<td>权限等级，1为一般用户可见，2为资产管理员可见，3为系统管理员可见</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Entity(id)</td>
+<td>URL所挂载的业务实体</td>
+</tr>
+</tbody>
+</table>
+<h2 id="journal">日志模型Journal</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>time</td>
+<td>DATETIME</td>
+<td></td>
+<td>操作发起的时间</td>
+</tr>
+<tr>
+<td>user</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES User(id)</td>
+<td>操作的用户</td>
+</tr>
+<tr>
+<td>operation_type</td>
+<td>INT</td>
+<td></td>
+<td>操作的名称:登录登出为1,关键信息修改(put)为2,创建相关(post)为3,删除相关(delete)为4</td>
+</tr>
+<tr>
+<td>object_type</td>
+<td>INT</td>
+<td></td>
+<td>操作的对象名称:用户相关为1,部门相关为2,资产相关为3,request相关为4,URL相关为5</td>
+</tr>
+<tr>
+<td>object_name</td>
+<td>VARCHAR(128)</td>
+<td></td>
+<td>操作对象的名字</td>
+</tr>
+<tr>
+<td>message</td>
+<td>VARCHAR(128)</td>
+<td></td>
+<td>操作者补充的操作信息</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Entity(id)</td>
+<td>日志所挂载的业务实体</td>
+</tr>
+</tbody>
+</table>
 
 
 

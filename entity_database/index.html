@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../user_database/">
       
       
-        <link rel="next" href="../database_intro/">
+        <link rel="next" href="../asset_database/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>API文档 - 资产管理系统文档</title>
+        <title>企业模型 - 资产管理系统文档</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api" class="md-skip">
+        <a href="#entity" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              API文档
+              企业模型
             
           </span>
         </div>
@@ -174,12 +174,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../api/" class="md-tabs__link">
       API文档
     </a>
   </li>
@@ -188,13 +186,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../database_intro/" class="md-tabs__link">
+      <a href="../database_intro/" class="md-tabs__link md-tabs__link--active">
         数据库模型
       </a>
     </li>
@@ -290,21 +290,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
         API文档
       </a>
-      
     </li>
   
 
@@ -315,14 +305,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -331,7 +323,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           数据库模型
@@ -370,11 +362,55 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../entity_database/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          企业模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         企业模型
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entity" class="md-nav__link">
+    业务实体模型Entity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#department" class="md-nav__link">
+    部门模型Department
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -462,8 +498,28 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entity" class="md-nav__link">
+    业务实体模型Entity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#department" class="md-nav__link">
+    部门模型Department
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -478,7 +534,94 @@
                   
 
 
-<h1 id="api">API 文档</h1>
+  <h1>企业模型</h1>
+
+<h2 id="entity">业务实体模型Entity</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR(32)</td>
+<td>UNIQUE</td>
+<td>业务实体名称</td>
+</tr>
+<tr>
+<td>log_journal</td>
+<td>VARCHAR</td>
+<td></td>
+<td>业务实体的登录登出日志</td>
+</tr>
+<tr>
+<td>operation_journal</td>
+<td>VARCHAR</td>
+<td></td>
+<td>业务实体的关键操作日志</td>
+</tr>
+</tbody>
+</table>
+<h2 id="department">部门模型Department</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR(32)</td>
+<td>UNIQUE</td>
+<td>部门名称</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Department(id)</td>
+<td>上一级组织 ID，根节点记作 NULL</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Entity(id)</td>
+<td>组织所在的实体</td>
+</tr>
+<tr>
+<td>userNumber</td>
+<td>INT</td>
+<td></td>
+<td>该部门下用户的数目</td>
+</tr>
+<tr>
+<td>subDeparmentNumber</td>
+<td>INT</td>
+<td></td>
+<td>该部门下子部门的数目</td>
+</tr>
+</tbody>
+</table>
 
 
 

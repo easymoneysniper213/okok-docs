@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../entity_database/">
       
       
-        <link rel="next" href="../database_intro/">
+        <link rel="next" href="../tech/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>API文档 - 资产管理系统文档</title>
+        <title>资产模型 - 资产管理系统文档</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api" class="md-skip">
+        <a href="#asset" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              API文档
+              资产模型
             
           </span>
         </div>
@@ -174,12 +174,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../api/" class="md-tabs__link">
       API文档
     </a>
   </li>
@@ -188,13 +186,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../database_intro/" class="md-tabs__link">
+      <a href="../database_intro/" class="md-tabs__link md-tabs__link--active">
         数据库模型
       </a>
     </li>
@@ -290,21 +290,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
         API文档
       </a>
-      
     </li>
   
 
@@ -315,14 +305,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -331,7 +323,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           数据库模型
@@ -384,11 +376,76 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../asset_database/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          资产模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         资产模型
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#asset" class="md-nav__link">
+    资产模型Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assettree" class="md-nav__link">
+    资产树节点模型AssetTree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pendingrequests" class="md-nav__link">
+    请求模型PendingRequests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assetstatistics" class="md-nav__link">
+    资产统计模型AssetStatistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynctasks" class="md-nav__link">
+    异步任务模型AsyncTasks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -462,8 +519,49 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#asset" class="md-nav__link">
+    资产模型Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assettree" class="md-nav__link">
+    资产树节点模型AssetTree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pendingrequests" class="md-nav__link">
+    请求模型PendingRequests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assetstatistics" class="md-nav__link">
+    资产统计模型AssetStatistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynctasks" class="md-nav__link">
+    异步任务模型AsyncTasks
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -478,7 +576,403 @@
                   
 
 
-<h1 id="api">API 文档</h1>
+  <h1>资产模型</h1>
+
+<h2 id="asset">资产模型Asset</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>资产的 ID</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Asset(id)</td>
+<td>上一级资产 ID，如果没有则记作 NULL</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产的名称</td>
+</tr>
+<tr>
+<td>assetClass</td>
+<td>INT</td>
+<td></td>
+<td>资产类型的 ID</td>
+</tr>
+<tr>
+<td>user</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCE User(id)</td>
+<td>资产挂账人的用户 ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL(8,2)</td>
+<td></td>
+<td>资产的现价格</td>
+</tr>
+<tr>
+<td>description</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产的说明</td>
+</tr>
+<tr>
+<td>position</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产的位置信息</td>
+</tr>
+<tr>
+<td>expire</td>
+<td>INT</td>
+<td></td>
+<td>资产是否被清退</td>
+</tr>
+<tr>
+<td>count</td>
+<td>INT</td>
+<td></td>
+<td>数量型资产的数量</td>
+</tr>
+<tr>
+<td>assetTree</td>
+<td>VARCHAR</td>
+<td>FOREIGN KEY REFERENCES AssetTree(name)</td>
+<td>资产属于资产层级树的哪一个节点</td>
+</tr>
+<tr>
+<td>department</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Department(id)</td>
+<td>资产属于哪一个部门</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>DATETIME</td>
+<td></td>
+<td>资产的创建时间</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>INT</td>
+<td></td>
+<td>资产的限期</td>
+</tr>
+<tr>
+<td>initial_price</td>
+<td>DECIMAL(8,2)</td>
+<td></td>
+<td>资产的原价格</td>
+</tr>
+<tr>
+<td>status</td>
+<td>INT</td>
+<td></td>
+<td>资产状态，1表示空闲，2表示员工使用中，3表示维保中</td>
+</tr>
+<tr>
+<td>history</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产相关历史（维保、领用、退库、转移）</td>
+</tr>
+<tr>
+<td>warning_date</td>
+<td>INT</td>
+<td></td>
+<td>资产的告警日期</td>
+</tr>
+<tr>
+<td>warning_amount</td>
+<td>INT</td>
+<td></td>
+<td>资产的告警数量</td>
+</tr>
+<tr>
+<td>picture_link</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产的图片链接</td>
+</tr>
+<tr>
+<td>richtxt</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产的富文本描述</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assettree">资产树节点模型AssetTree</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>资产树节点的 ID</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Asset(id)</td>
+<td>上一级资产 ID，根节点的记作 NULL</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR</td>
+<td></td>
+<td>资产的名称</td>
+</tr>
+<tr>
+<td>department</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Department(id)</td>
+<td>资产属于哪一个部门</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pendingrequests">请求模型PendingRequests</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>请求的 ID</td>
+</tr>
+<tr>
+<td>initiator</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES User(id)</td>
+<td>申请发起者的用户名字</td>
+</tr>
+<tr>
+<td>participant</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES User(id)</td>
+<td>申请接受者(一般为资产管理员)</td>
+</tr>
+<tr>
+<td>target</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES User(id)</td>
+<td>申请中涉及另一用户名字(若没有则记作NULL)</td>
+</tr>
+<tr>
+<td>count</td>
+<td>INT</td>
+<td></td>
+<td>申请资产数量</td>
+</tr>
+<tr>
+<td>asset</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES Asset(id)</td>
+<td>涉及领用的资产</td>
+</tr>
+<tr>
+<td>type</td>
+<td>INT</td>
+<td></td>
+<td>申请的类型，如领用 （1）/ 退库（2） /  维保（3） / 转移（4）等</td>
+</tr>
+<tr>
+<td>result</td>
+<td>INT</td>
+<td></td>
+<td>审批的结果(0表示未审批，1表示成功，2表示失败)</td>
+</tr>
+<tr>
+<td>request_time</td>
+<td>DATETIME</td>
+<td></td>
+<td>请求的发起时间，以时间戳保存</td>
+</tr>
+<tr>
+<td>review_time</td>
+<td>DATETIME</td>
+<td></td>
+<td>审批时间，以时间戳保存（未审批默认为无限远）</td>
+</tr>
+<tr>
+<td>maintain_asset</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES Asset(id)</td>
+<td>涉及维保的资产</td>
+</tr>
+<tr>
+<td>feishu_message_id</td>
+<td>VARCHAR</td>
+<td></td>
+<td>该请求在飞书客户端中的消息id</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>INT</td>
+<td></td>
+<td>请求是否有效</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assetstatistics">资产统计模型AssetStatistics</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>该资产统计的id</td>
+</tr>
+<tr>
+<td>asset</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES Asset(id)</td>
+<td>该统计涉及的资产</td>
+</tr>
+<tr>
+<td>cur_department</td>
+<td>INT</td>
+<td>FOREIGN KEY REFERENCES Department(id)</td>
+<td>该统计的资产所在的部门</td>
+</tr>
+<tr>
+<td>cur_user</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES User(id)</td>
+<td>统计的资产所属于的用户</td>
+</tr>
+<tr>
+<td>cur_price</td>
+<td>DECIMAL(8,2)</td>
+<td></td>
+<td>统计的资产目前的价值</td>
+</tr>
+<tr>
+<td>cur_time</td>
+<td>DATETIME</td>
+<td></td>
+<td>统计创建的时间</td>
+</tr>
+<tr>
+<td>cur_status</td>
+<td>INT</td>
+<td></td>
+<td>统计的资产目前的状态，1表示空闲，2表示员工使用中，3表示维保中</td>
+</tr>
+<tr>
+<td>cur_count</td>
+<td>INT</td>
+<td></td>
+<td>统计的资产目前的数量</td>
+</tr>
+</tbody>
+</table>
+<h2 id="asynctasks">异步任务模型AsyncTasks</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INT</td>
+<td>PRIMARY KEY</td>
+<td>该异步任务的id</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES ENTITY(id)</td>
+<td>该异步任务所属于的业务实体</td>
+</tr>
+<tr>
+<td>manager</td>
+<td>INT</td>
+<td>FOREIGN KEY  REFERENCES USER(id)</td>
+<td>该异步任务所属于的管理员</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>DATETIME</td>
+<td></td>
+<td>异步任务创建的时间</td>
+</tr>
+<tr>
+<td>number_need</td>
+<td>INT</td>
+<td></td>
+<td>异步任务需要导入的资产数</td>
+</tr>
+<tr>
+<td>number_succeed</td>
+<td>INT</td>
+<td></td>
+<td>异步任务成功导入的资产数</td>
+</tr>
+<tr>
+<td>finish</td>
+<td>INT</td>
+<td></td>
+<td>异步任务的状态，0表示进行中，1是成功，2是失败</td>
+</tr>
+<tr>
+<td>failed_message</td>
+<td>VARCHAR</td>
+<td></td>
+<td>导致该异步任务失败的具体信息</td>
+</tr>
+<tr>
+<td>port_type</td>
+<td>INT</td>
+<td></td>
+<td>异步任务类型，0表示导入，1表示导出</td>
+</tr>
+</tbody>
+</table>
 
 
 
