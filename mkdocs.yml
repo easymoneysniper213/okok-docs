@@ -11,7 +11,10 @@ nav:
     - 部门模块: api_department.md
     - url模块: api_url.md
     - 审批单模块: api_pendingrequest.md
-    - 资产模块: api_asset.md
+    - 资产模块:
+      - 异步任务模块: api_task.md
+      - 资产模块: api_asset.md
+      - 资产分类树模块: api_assettree.md
     - 日志模块: api_journal.md
   - 数据库模型: 
     - 数据库简介: database_intro.md

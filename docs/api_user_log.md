@@ -28,30 +28,34 @@
 
 <details>
  <summary>示例</summary>
-请求
+ <details>
+  <summary>请求</summary>
 
 ```json
-{
-  "identity":"zhang_san"
-  "password":"99b1ff8f11781541f7f89f9bd41c4a17"
-}
-```
+    {
+      "identity":"zhang_san",
+      "password":"99b1ff8f11781541f7f89f9bd41c4a17"
+    }
 
-响应
+```
+</details>
+<details>
+  <summary>响应</summary>
 
 ```json
-{
-  "code":0,
-  "data":{
-    "session":"Rd8Gs0jw0jdbUeJzf7EIBwkwr7aYit74" 
-    "character":1
-  }
-}
+    {
+    "code":0,
+    "data":
+      {
+      "session":"Rd8Gs0jw0jdbUeJzf7EIBwkwr7aYit74",
+      "character":1
+      }
+    }
+
 ```
-
+</details>
 </details>
 
-</details>
 
 ## 用户登出接口
 
@@ -76,21 +80,26 @@
 
 <details>
  <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
 
-请求
-
-```cpp
+```json
 {
   "session": "Rd8Gs0jw0jdbUeJzf7EIBwkwr7aYit74" 
 }
 
 ```
+</details>
+<details>
+  <summary>响应</summary>
 
-响应
-
-```cpp
+```json
 {
   "code":0,
-  "info":Succeed,
+  "info":"Succeed",
 }
+
 ```
+</details>
+</details>
+
