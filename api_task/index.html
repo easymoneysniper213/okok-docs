@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../api/">
+        <link rel="prev" href="../api_pendingrequest/">
       
       
-        <link rel="next" href="../api_user_operation/">
+        <link rel="next" href="../api_asset/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>用户登录模块 - 资产管理系统文档</title>
+        <title>异步任务模块 - 资产管理系统文档</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              用户登录模块
+              异步任务模块
             
           </span>
         </div>
@@ -337,16 +337,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
       
       
       
@@ -355,7 +353,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_2">
           <span class="md-nav__icon md-icon"></span>
           用户模块
@@ -366,55 +364,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          用户登录模块
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api_user_log/" class="md-nav__link">
         用户登录模块
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    用户登录接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    用户登出接口
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -501,14 +455,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
       
       
       
@@ -517,7 +473,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2_7">
           <span class="md-nav__icon md-icon"></span>
           资产模块
@@ -528,11 +484,55 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../api_task/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          异步任务模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         异步任务模块
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -755,14 +755,14 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    用户登录接口
+    接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    用户登出接口
+    接口
   </a>
   
 </li>
@@ -782,174 +782,14 @@
                   
 
 
-  <h1>用户登录模块</h1>
+  <h1>异步任务模块</h1>
 
-<h2 id="_1">用户登录接口</h2>
-<p><strong>接口描述</strong>：此接口用于进行用户的登录，本系统没有注册功能，用户来源于超级管理员与系统管理员的创建。</p>
-<p><code>[POST] /api/login</code></p>
-<p><strong>请求参数</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>identity</td>
-<td>str</td>
-<td>登录所用的用户名字或邮箱</td>
-</tr>
-<tr>
-<td>password</td>
-<td>str</td>
-<td>用户密码的散列值(MD5)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>成功响应参数</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>session</td>
-<td>str</td>
-<td>用户的会话标识符</td>
-</tr>
-<tr>
-<td>character</td>
-<td>int</td>
-<td>用户的角色类型</td>
-</tr>
-</tbody>
-</table>
-<p><strong>失败响应状态</strong></p>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>错误信息</th>
-<th>相关说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>用户名或密码错误</td>
-<td>用户输入的名字或邮箱不存在，或用户输入的密码错误</td>
-</tr>
-</tbody>
-</table>
-<p>补充：出于保护用户的安全信息，并不会对用户的登录失败信息做具体的名字、邮箱或密码提示；同时认为可以重复登录，但由于登录会为该用户赋唯一的sessionId，先前登录的用户所有操作将失效，也保证了安全。</p>
-<details>
- <summary>示例</summary>
- <details>
-  <summary>请求</summary>
-
-
-<pre><code class="language-json">    {
-      &quot;identity&quot;:&quot;zhang_san&quot;,
-      &quot;password&quot;:&quot;99b1ff8f11781541f7f89f9bd41c4a17&quot;
-    }
-
-</code></pre>
-
-</details>
-<details>
-  <summary>响应</summary>
-
-
-<pre><code class="language-json">    {
-    &quot;code&quot;:0,
-    &quot;data&quot;:
-      {
-      &quot;session&quot;:&quot;Rd8Gs0jw0jdbUeJzf7EIBwkwr7aYit74&quot;,
-      &quot;character&quot;:1
-      }
-    }
-
-</code></pre>
-
-</details>
-</details>
-
-<h2 id="_2">用户登出接口</h2>
-<p><strong>接口描述</strong>：此接口用于已登录用户的登出，使得用户会话失效</p>
-<p><code>[PUT] /api/logout</code></p>
-<p><strong>请求参数</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>session</td>
-<td>str</td>
-<td>用户的会话标识符</td>
-</tr>
-</tbody>
-</table>
-<p>无成功响应参数，接口调用成功则用户直接登出，清除用户的sessionId并返回Succeed</p>
-<p><strong>失败响应状态</strong></p>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>错误信息</th>
-<th>相关说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>用户的会话标识符信息不正确</td>
-<td>用户提供的sessionId不符合规范，如长度不为32位，包含特殊字符等</td>
-</tr>
-<tr>
-<td>1</td>
-<td>用户还未登录</td>
-<td>根据用户提供的sessionId找不到具体用户</td>
-</tr>
-</tbody>
-</table>
-<details>
- <summary>示例</summary>
- <details>
-  <summary>请求</summary>
-
-
-<pre><code class="language-json">{
-  &quot;session&quot;: &quot;Rd8Gs0jw0jdbUeJzf7EIBwkwr7aYit74&quot; 
-}
-
-</code></pre>
-
-</details>
-<details>
-  <summary>响应</summary>
-
-
-<pre><code class="language-json">{
-  &quot;code&quot;:0,
-  &quot;info&quot;:&quot;Succeed&quot;,
-}
-
-</code></pre>
-
-</details>
-</details>
+<h2 id="_1">接口</h2>
+<p><strong>接口描述</strong>：此接口用于</p>
+<p><code>[GET] /api/export_task/{session}</code></p>
+<h2 id="_2">接口</h2>
+<p><strong>接口描述</strong>：此接口用于</p>
+<p><code>[GET] /api/export_task/{session}/{id}</code></p>
 
 
 
