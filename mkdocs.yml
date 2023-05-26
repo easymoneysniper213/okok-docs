@@ -13,7 +13,11 @@ nav:
     - 审批单模块: api_pendingrequest.md
     - 资产模块: api_asset.md
     - 日志模块: api_journal.md
-  - 数据库模型: database.md
+  - 数据库模型: 
+    - 数据库简介: database_intro.md
+    - 用户模型: user_database.md
+    - 企业模型: entity_database.md
+    - 资产模型: asset_database.md
   - 技术选型和部署: tech.md
   - 测试文档: test.md
   - 用户使用指南: user-guide.md
