@@ -2,11 +2,22 @@ site_name: 资产管理系统文档
 
 nav:
   - 项目简介: index.md
-  - API文档: api.md
+  - API文档:
+    - 总述: api.md
+    - 用户模块: 
+      - 用户登录模块: api_user_log.md
+      - 用户操作模块: api_user_operation.md
+    - 业务实体模块: api_entity.md
+    - 部门模块: api_department.md
+    - url模块: api_url.md
+    - 审批单模块: api_pendingrequest.md
+    - 资产模块: api_asset.md
+    - 日志模块: api_journal.md
   - 数据库模型: database.md
   - 技术选型和部署: tech.md
   - 测试文档: test.md
   - 用户使用指南: user-guide.md
+
 
 theme:
   name: material
