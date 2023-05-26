@@ -486,6 +486,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../api_statistics/" class="md-nav__link">
+        资产统计模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api_task/" class="md-nav__link">
         异步任务模块
       </a>
@@ -648,6 +662,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    修改告警策略接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    获取告警策略接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    获取已告警资产接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    获取条目型资产接口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -686,6 +728,34 @@
     <li class="md-nav__item">
       <a href="../api_journal/" class="md-nav__link">
         日志模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_feishu/" class="md-nav__link">
+        飞书模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_search/" class="md-nav__link">
+        搜索模块
       </a>
     </li>
   
@@ -977,6 +1047,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    修改告警策略接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    获取告警策略接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    获取已告警资产接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    获取条目型资产接口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -996,7 +1094,7 @@
 
 <h2 id="_1">创建资产接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员创建资产</p>
-<p><code>[POST] /api/asset/{session}</code></p>
+<p><code>[POST] /api/post_asset/{session}</code></p>
 <h2 id="_2">修改资产信息接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员修改资产信息</p>
 <p><code>[PUT] /api/asset/{session}</code></p>
@@ -1045,6 +1143,18 @@
 <h2 id="_17">修改资产图片链接接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员修改某指定资产的图片链接和富文本内容</p>
 <p><code>[PUT] /picture/{session}/{asset_id}</code></p>
+<h2 id="_18">修改告警策略接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员修改某指定资产告警策略</p>
+<p><code>[PUT] /warning/{session}</code></p>
+<h2 id="_19">获取告警策略接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取业务实体下全部资产告警策略</p>
+<p><code>[GET] /warning_get/{session}/{page}</code></p>
+<h2 id="_20">获取已告警资产接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取业务实体下全部已告警资产</p>
+<p><code>[GET] /warning_list/{session}</code></p>
+<h2 id="_21">获取条目型资产接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取某指定条目型资产</p>
+<p><code>[GET] /all_item_assets/{session}/{asset_id}</code></p>
 
 
 

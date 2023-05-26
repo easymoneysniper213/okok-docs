@@ -535,6 +535,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../api_statistics/" class="md-nav__link">
+        资产统计模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api_task/" class="md-nav__link">
         异步任务模块
       </a>
@@ -586,6 +600,34 @@
     <li class="md-nav__item">
       <a href="../api_journal/" class="md-nav__link">
         日志模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_feishu/" class="md-nav__link">
+        飞书模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_search/" class="md-nav__link">
+        搜索模块
       </a>
     </li>
   
@@ -836,8 +878,8 @@
 </table>
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 
 <pre><code class="language-json">{
@@ -845,17 +887,18 @@
 }
 </code></pre>
 
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
-  &quot;code&quot;:0
-  &quot;info&quot;:Succeed
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Succeed&quot;
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_2">获取所有业务实体列表接口</h2>
@@ -882,12 +925,16 @@
 <p>此接口除鉴权外无其他失败响应</p>
 <details>
  <summary>示例</summary>
-
-响应
+ <details>
+  <summary>请求</summary>
+无
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
-  &quot;code&quot;:0
+  &quot;code&quot;:0,
   &quot;data&quot;:[
   {
     &quot;id&quot;:1,
@@ -902,7 +949,7 @@
 
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_3">修改业务实体信息接口</h2>
@@ -955,27 +1002,28 @@
 </table>
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 
 <pre><code class="language-json">{
-  &quot;id&quot;:1
+  &quot;id&quot;:1,
   &quot;name&quot;:&quot;b&quot;
 }
 </code></pre>
 
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
-  &quot;code&quot;:0
+  &quot;code&quot;:0,
   &quot;info&quot;:&quot;Succeed&quot;
 }
 </code></pre>
 
-
+</details>
 </details>
 
 

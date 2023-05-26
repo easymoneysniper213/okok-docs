@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../api_asset/">
+        <link rel="prev" href="../api_pendingrequest/">
       
       
-        <link rel="next" href="../api_journal/">
+        <link rel="next" href="../api_task/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>资产分类树模块 - 资产管理系统文档</title>
+        <title>资产统计模块 - 资产管理系统文档</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              资产分类树模块
+              资产统计模块
             
           </span>
         </div>
@@ -484,11 +484,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../api_statistics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          资产统计模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         资产统计模块
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    获取部门下全部资产数量信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    获取部门下全部资产状态信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    获取资产价值曲线接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    获取部门下全部资产数目和价值变化曲线接口
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -526,76 +584,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          资产分类树模块
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api_assettree/" class="md-nav__link">
         资产分类树模块
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    创建资产树节点接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    获取某个资产树节点的子节点接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    删除某个资产树节点接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    获取某个部门资产树根节点接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    获取某个资产树节点下所有资产的接口
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -818,35 +811,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    创建资产树节点接口
+    获取部门下全部资产数量信息接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    获取某个资产树节点的子节点接口
+    获取部门下全部资产状态信息接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    删除某个资产树节点接口
+    获取资产价值曲线接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    获取某个部门资产树根节点接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    获取某个资产树节点下所有资产的接口
+    获取部门下全部资产数目和价值变化曲线接口
   </a>
   
 </li>
@@ -866,23 +852,20 @@
                   
 
 
-  <h1>资产分类树模块</h1>
+  <h1>资产统计模块</h1>
 
-<h2 id="_1">创建资产树节点接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员创建资产树节点</p>
-<p><code>[POST] /api/asset_tree/{session}</code></p>
-<h2 id="_2">获取某个资产树节点的子节点接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员获取某个特定资产树节点的全部子节点</p>
-<p><code>[GET] /api/sub_asset_tree/{session}/{asset_tree_node_name}</code></p>
-<h2 id="_3">删除某个资产树节点接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员删除某个特定资产树节点</p>
-<p><code>[DELETE] /api/sub_asset_tree/{session}/{asset_tree_node_name}</code></p>
-<h2 id="_4">获取某个部门资产树根节点接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员获取该部门资产树根节点（即“默认分类”）</p>
-<p><code>[GET] /api/asset_tree_root/{session/{department_name}</code></p>
-<h2 id="_5">获取某个资产树节点下所有资产的接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员获取某个特定资产树节点下所有资产</p>
-<p><code>[GET] /api/asset_tree_node/{session}/{asset_tree_node_name}/{page}/{expire}</code></p>
+<h2 id="_1">获取部门下全部资产数量信息接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取该部门下全部资产数量信息</p>
+<p><code>[GET] /count_department_asset/{session}</code></p>
+<h2 id="_2">获取部门下全部资产状态信息接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取该部门下全部资产状态信息</p>
+<p><code>[GET] /count_status_asset/{session}</code></p>
+<h2 id="_3">获取资产价值曲线接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取某个特定资产的资产价值曲线</p>
+<p><code>[GET] /info_curve/{session}/{asset_id}/{visible_type}</code></p>
+<h2 id="_4">获取部门下全部资产数目和价值变化曲线接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取部门下全部资产数目和价值变化曲线</p>
+<p><code>[GET] /count_price_curve/{session}/{visible_type}</code></p>
 
 
 

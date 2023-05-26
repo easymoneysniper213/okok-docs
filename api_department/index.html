@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -417,9 +422,80 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          部门模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         部门模块
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    获取业务实体下全部部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    获取某部门全部合法父部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    创建部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    获取根部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    修改部门信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    获取子部门信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    删除部门信息接口
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -487,6 +563,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../api_statistics/" class="md-nav__link">
+        资产统计模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api_task/" class="md-nav__link">
         异步任务模块
       </a>
@@ -538,6 +628,34 @@
     <li class="md-nav__item">
       <a href="../api_journal/" class="md-nav__link">
         日志模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_feishu/" class="md-nav__link">
+        飞书模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_search/" class="md-nav__link">
+        搜索模块
       </a>
     </li>
   
@@ -704,6 +822,63 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    获取业务实体下全部部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    获取某部门全部合法父部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    创建部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    获取根部门接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    修改部门信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    获取子部门信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    删除部门信息接口
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -719,7 +894,27 @@
 
   <h1>部门模块</h1>
 
-
+<h2 id="_1">获取业务实体下全部部门接口</h2>
+<p><strong>接口描述</strong>：此接口用于管理员获取自己业务实体下下全部部门</p>
+<p><code>[GET] /api/all_departments/{session}/{entity_name}</code></p>
+<h2 id="_2">获取某部门全部合法父部门接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员获取某部门全部合法父部门</p>
+<p><code>[GET] /api/valid_parent_departments/{session}/{department_name}</code></p>
+<h2 id="_3">创建部门接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员创建部门</p>
+<p><code>[POST] /api/department/{session}</code></p>
+<h2 id="_4">获取根部门接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员获取业务实体下所有根部门</p>
+<p><code>[GET] /api/department/{session}</code></p>
+<h2 id="_5">修改部门信息接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员修改业务实体下所有部门信息</p>
+<p><code>[PUT] /api/department/{session}</code></p>
+<h2 id="_6">获取子部门信息接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员获取某个部门全部子部门信息</p>
+<p><code>[GET] /api/sub_department/{session}/{department_name}</code></p>
+<h2 id="_7">删除部门信息接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员删除某个部门</p>
+<p><code>[DELETE] /api/department/{session}/{department_name}</code></p>
 
 
 

@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#url" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -431,9 +436,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          url模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         url模块
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    获取url的接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    修改url的接口
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -480,6 +521,20 @@
           资产模块
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_statistics/" class="md-nav__link">
+        资产统计模块
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -538,6 +593,34 @@
     <li class="md-nav__item">
       <a href="../api_journal/" class="md-nav__link">
         日志模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_feishu/" class="md-nav__link">
+        飞书模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_search/" class="md-nav__link">
+        搜索模块
       </a>
     </li>
   
@@ -704,6 +787,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    获取url的接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    修改url的接口
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -719,7 +824,12 @@
 
   <h1>url模块</h1>
 
-
+<h2 id="url">获取url的接口</h2>
+<p><strong>接口描述</strong>：此接口用于用户获取自己能看到的url</p>
+<p><code>[GET] /api/url/{session}</code></p>
+<h2 id="url_1">修改url的接口</h2>
+<p><strong>接口描述</strong>：此接口用于系统管理员修改不同等级用户能看到的url</p>
+<p><code>[PUT] /api/url/{session}</code></p>
 
 
 

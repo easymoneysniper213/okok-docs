@@ -467,6 +467,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    管理员获取同业务实体全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    一级用户获取同业务实体全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    用户获取个人信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    管理员获取同部门下全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    一级用户获取同部门下全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    资产管理员获取某部门下全部资产管理员接口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -572,6 +614,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../api_statistics/" class="md-nav__link">
+        资产统计模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api_task/" class="md-nav__link">
         异步任务模块
       </a>
@@ -623,6 +679,34 @@
     <li class="md-nav__item">
       <a href="../api_journal/" class="md-nav__link">
         日志模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_feishu/" class="md-nav__link">
+        飞书模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_search/" class="md-nav__link">
+        搜索模块
       </a>
     </li>
   
@@ -851,6 +935,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    管理员获取同业务实体全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    一级用户获取同业务实体全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    用户获取个人信息接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    管理员获取同部门下全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    一级用户获取同部门下全部用户接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    资产管理员获取某部门下全部资产管理员接口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -973,8 +1099,8 @@
 </table>
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 
 <pre><code class="language-json">{
@@ -988,17 +1114,18 @@
 }
 </code></pre>
 
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
   &quot;code&quot;:0,
-  &quot;info&quot;:Succeed,
+  &quot;info&quot;:&quot;Succeed&quot;,
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_2">修改用户相关信息接口</h2>
@@ -1066,8 +1193,8 @@
 </table>
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 
 <pre><code class="language-json">{
@@ -1077,17 +1204,18 @@
 }
 </code></pre>
 
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
   &quot;code&quot;:0,
-  &quot;info&quot;:Success,
+  &quot;info&quot;:&quot;Success&quot;,
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_3">获取用户角色接口</h2>
@@ -1135,19 +1263,23 @@
 </table>
 <details>
  <summary>示例</summary>
-
-响应
+ <details>
+  <summary>请求</summary>
+        无
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
-  &quot;code&quot;:0
+  &quot;code&quot;:0,
   &quot;data&quot;:{
     &quot;character&quot;:1
   }
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_4">获取全部用户列表接口</h2>
@@ -1201,8 +1333,12 @@
 </table>
 <details>
  <summary>示例</summary>
-
-响应
+ <details>
+  <summary>请求</summary>
+        无
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
@@ -1210,7 +1346,7 @@
   &quot;pages&quot;:1,
   &quot;data&quot;: [
   {
-    &quot;id&quot;：1
+    &quot;id&quot;:1,
     &quot;name&quot;: &quot;example_user&quot;,
     &quot;password&quot;: &quot;password123&quot;,
     &quot;entityName&quot; : &quot;aba&quot;,
@@ -1233,7 +1369,7 @@
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_5">用户更改自己的密码接口</h2>
@@ -1281,8 +1417,8 @@
 </table>
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 
 <pre><code class="language-json">{
@@ -1291,17 +1427,18 @@
 }
 </code></pre>
 
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
    &quot;code&quot;:0,
-   &quot;info&quot;:Succeed,
+   &quot;info&quot;:&quot;Succeed&quot;,
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_6">用户更改自己的邮箱接口</h2>
@@ -1354,8 +1491,8 @@
 </table>
 <details>
  <summary>示例</summary>
-
-请求
+ <details>
+  <summary>请求</summary>
 
 
 <pre><code class="language-json">{
@@ -1364,17 +1501,18 @@
 }
 </code></pre>
 
-
-响应
+</details>
+<details>
+  <summary>响应</summary>
 
 
 <pre><code class="language-json">{
    &quot;code&quot;:0,
-   &quot;info&quot;:Succeed,
+   &quot;info&quot;:&quot;Succeed&quot;,
 }
 </code></pre>
 
-
+</details>
 </details>
 
 <h2 id="_7">获取同部门资产管理员接口</h2>
@@ -1383,6 +1521,24 @@
 <h2 id="_8">获取同业务实体资产管理员接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取同业务实体下所有的资产管理员</p>
 <p><code>[GET] /api/asset_manager_entity/{session}/{entity_name}</code></p>
+<h2 id="_9">管理员获取同业务实体全部用户接口</h2>
+<p><strong>接口描述</strong>：此接口用于管理员获取同业务实体下所有的用户</p>
+<p><code>[GET] /api/user_entity/{session}/{entity_name}/{page}</code></p>
+<h2 id="_10">一级用户获取同业务实体全部用户接口</h2>
+<p><strong>接口描述</strong>：此接口用于一级用户获取同业务实体下所有的用户</p>
+<p><code>[GET] /api/user_entity4user/{session}/{page}</code></p>
+<h2 id="_11">用户获取个人信息接口</h2>
+<p><strong>接口描述</strong>：此接口用于用户获取自己的个人信息</p>
+<p><code>[GET] /api/cur_entity/{session}/{page}</code></p>
+<h2 id="_12">管理员获取同部门下全部用户接口</h2>
+<p><strong>接口描述</strong>：此接口用于管理员获取同部门下所有的用户</p>
+<p><code>[GET] /api/user_department/{session}/{department_name}/{page}</code></p>
+<h2 id="_13">一级用户获取同部门下全部用户接口</h2>
+<p><strong>接口描述</strong>：此接口用于一级用户获取同部门下所有的用户</p>
+<p><code>[GET] /api/user_department_2/{session}/{department_name}</code></p>
+<h2 id="_14">资产管理员获取某部门下全部资产管理员接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取某部门下全部资产管理员</p>
+<p><code>[GET] /api/managers_department/{session}/{department_name}</code></p>
 
 
 

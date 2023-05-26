@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../api_pendingrequest/">
+        <link rel="prev" href="../api_statistics/">
       
       
         <link rel="next" href="../api_asset/">
@@ -484,6 +484,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../api_statistics/" class="md-nav__link">
+        资产统计模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -524,6 +538,34 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    异步任务创建资产接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    获取失败任务接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     接口
   </a>
   
@@ -581,6 +623,34 @@
     <li class="md-nav__item">
       <a href="../api_journal/" class="md-nav__link">
         日志模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_feishu/" class="md-nav__link">
+        飞书模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_search/" class="md-nav__link">
+        搜索模块
       </a>
     </li>
   
@@ -767,6 +837,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    异步任务创建资产接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    获取失败任务接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -790,6 +888,18 @@
 <h2 id="_2">接口</h2>
 <p><strong>接口描述</strong>：此接口用于</p>
 <p><code>[GET] /api/export_task/{session}/{id}</code></p>
+<h2 id="_3">接口</h2>
+<p><strong>接口描述</strong>：此接口用于</p>
+<p><code>[GET] /api/async_task/{session}</code></p>
+<h2 id="_4">异步任务创建资产接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员通过异步任务创建资产</p>
+<p><code>[POST] /api/asset/{session}</code></p>
+<h2 id="_5">获取失败任务接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取失败的异步任务</p>
+<p><code>[GET] /failed_task/{session}/{id}</code></p>
+<h2 id="_6">接口</h2>
+<p><strong>接口描述</strong>：此接口</p>
+<p><code>[PUT] /failed_task/{session}/{id}</code></p>
 
 
 
