@@ -869,18 +869,449 @@
 <h2 id="_1">飞书快捷登录接口</h2>
 <p><strong>接口描述</strong>：此接口用于绑定飞书账号的用户快速登录系统</p>
 <p><code>[POST] /api/qrLogin</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redirect_uri</td>
+<td>str</td>
+<td>鉴权过程完成后重定向的页面</td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>飞书客户端返回的code，用于后续鉴权流程</td>
+</tr>
+</tbody>
+</table>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session</td>
+<td>str</td>
+<td>用户的会话标识符</td>
+</tr>
+<tr>
+<td>character</td>
+<td>int</td>
+<td>用户的角色类型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>提供的飞书用户未绑定用户</td>
+<td>提供的飞书用户未绑定用户</td>
+</tr>
+<tr>
+<td>5</td>
+<td>您已被锁定</td>
+<td>被锁定的用户无法登录</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;redirect_uri&quot;:&quot;https//:www.baidu.com&quot;,
+  &quot;code&quot;:&quot;abababababab&quot;
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">    {
+    &quot;code&quot;:0,
+    &quot;data&quot;:
+      {
+      &quot;session&quot;:&quot;Rd8Gs0jw0jdbUeJzf7EIBwkwr7aYit74&quot;,
+      &quot;character&quot;:1
+      }
+    }
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_2">绑定飞书账号接口</h2>
 <p><strong>接口描述</strong>：此接口用于用户绑定飞书账号</p>
 <p><code>[PUT] /api/feishu_name/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feishu_name</td>
+<td>str</td>
+<td>绑定的飞书用户名</td>
+</tr>
+<tr>
+<td>feishu_phone</td>
+<td>str</td>
+<td>绑定的飞书电话号码</td>
+</tr>
+</tbody>
+</table>
+<p>无成功响应参数，接口调用成功则用户信息被修改，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td>该飞书用户名对应的用户已经存在</td>
+<td>该飞书用户名对应的用户已经存在</td>
+</tr>
+<tr>
+<td>10</td>
+<td>该飞书电话号码对应的用户已经存在</td>
+<td>该飞书电话号码对应的用户已经存在</td>
+</tr>
+<tr>
+<td>11</td>
+<td>飞书用户名与飞书电话号码不匹配</td>
+<td>即输入的飞书用户名与飞书电话号码不匹配</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;feishu_name&quot;:&quot;xpy&quot;,
+  &quot;feishu_phone&quot;:&quot;114514&quot;
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Success&quot;,
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_3">同步飞书用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于绑定飞书账号的系统管理员同步飞书用户</p>
 <p><code>[POST] /api/feishu_users/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<p>无请求参数             </p>
+<p><strong>成功响应参数</strong>
+无成功响应参数，接口调用成功则同步飞书用户成功，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>找不到管理员的实体</td>
+<td>对应系统管理员的业务实体不存在</td>
+</tr>
+<tr>
+<td>7</td>
+<td>管理员尚未绑定飞书用户</td>
+<td>如果管理员尚未绑定飞书用户，自然无法进行同步飞书用户的操作</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+无
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Success&quot;,
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_4">同步更新飞书新增用户接口</h2>
-<p><strong>接口描述</strong>：此接口用于在系统中同步更新飞书新增用户</p>
-<p><code>[POST] /api/feishu_get_event</code></p>
+<p><strong>接口描述</strong>：此接口用于在系统中同步更新飞书新增用户(注意该接口并不是由系统的前端调用的，而是在飞书有新用户进入企业后，由飞书客户端通过事件推送向后端发送一个请求并调用该api处理)
+<code>[POST] /api/feishu_get_event</code></p>
+<p><em>请求参数</em>*</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>str</td>
+<td>入职用户的飞书user_id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>入职用户的姓名</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>str</td>
+<td>入职用户的电话号码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>成功响应参数</strong>
+无成功响应参数，接口调用成功则同步更新飞书用户成功，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<p>该api的失败可能原因是飞书与系统的通信出现问题</p>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+    &quot;event&quot;: {
+        &quot;object&quot;: {
+            &quot;user_id&quot;: &quot;e33ggbyz&quot;,
+            &quot;name&quot;: &quot;张三&quot;,
+            &quot;mobile&quot;: &quot;12345678910&quot;,
+        }
+    }
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Success&quot;,
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_5">飞书审批接口</h2>
-<p><strong>接口描述</strong>：此接口用于飞书审批后在系统中同步更新审批结果</p>
+<p><strong>接口描述</strong>：此接口用于飞书审批后在系统中同步更新审批结果(注意该接口并不是由系统的前端调用的，而是在飞书在用户进行审批后，由飞书客户端向后端发送一个请求并调用该api处理)</p>
 <p><code>[POST] /api/feishu_approval</code></p>
+<p><em>请求参数</em>*</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>action_type</td>
+<td>str</td>
+<td>记录用户是同意还是拒绝该请求，同意则为"APPROVE",拒绝则为"REJECT"</td>
+</tr>
+<tr>
+<td>message_id</td>
+<td>str</td>
+<td>该请求在飞书中的消息卡片id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>成功响应参数</strong>
+无成功响应参数，接口调用成功则同步更新飞书用户成功，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>对应id不存在</td>
+<td>找不到对应id的待处理请求</td>
+</tr>
+<tr>
+<td>11</td>
+<td>操作类型无效!</td>
+<td>action_type的值不是"APPROVE"或者"REJECT"其中之一</td>
+</tr>
+<tr>
+<td>2</td>
+<td>资产不存在</td>
+<td>操作的资产不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>指定名称的资产管理员不存在</td>
+<td>操作指定的资产管理员不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>只有用户才能接收资产</td>
+<td>选择的资产接收者不是一级用户</td>
+</tr>
+<tr>
+<td>2</td>
+<td>只有用户才能退库资产</td>
+<td>选择的资产退库者不是一级用户</td>
+</tr>
+<tr>
+<td>2</td>
+<td>转移发起人必须是用户</td>
+<td>选择的资产转移人不是一级用户</td>
+</tr>
+<tr>
+<td>2</td>
+<td>指定名字的资产树结点不存在</td>
+<td>资产转移时指定名字的资产树结点不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>资产接收者与资产管理人不在同一部门下</td>
+<td>用户只能同一部门下资产管理员发送请求</td>
+</tr>
+<tr>
+<td>2</td>
+<td>资产退库者与资产管理人不在同一部门下</td>
+<td>用户只能同一部门下资产管理员发送请求</td>
+</tr>
+<tr>
+<td>2</td>
+<td>资产转移者与资产管理人不在同一部门下</td>
+<td>用户只能同一部门下资产管理员发送请求</td>
+</tr>
+<tr>
+<td>3</td>
+<td>资产{asset.name}不是数量类型资产，请再次检查</td>
+<td>请求的条目型资产数目大于1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>资产{asset.name}数量不足</td>
+<td>请求的资产数目不足</td>
+</tr>
+<tr>
+<td>4</td>
+<td>资产{asset.name}数量不足</td>
+<td>请求的资产数目不足</td>
+</tr>
+<tr>
+<td>250</td>
+<td>如果您不想要此资产，请什么都不做，而不是浪费时间</td>
+<td>请求领用资产数小于等于0</td>
+</tr>
+<tr>
+<td>250</td>
+<td>如果您不想退库此资产，请什么都不做，而不是浪费时间</td>
+<td>请求退库资产数小于等于0</td>
+</tr>
+<tr>
+<td>250</td>
+<td>如果您不想要转移此资产，请什么都不做，而不是浪费时间</td>
+<td>请求转移资产数小于等于0</td>
+</tr>
+<tr>
+<td>529</td>
+<td>未进行任何转移</td>
+<td>未进行任何转移</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+    &quot;action_type&quot;:&quot;APPROVE&quot;,
+    &quot;message_id&quot;:&quot;qewqdadfwefsf&quot;,
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Success&quot;,
+}
+</code></pre>
+
+</details>
+</details>
 
 
 
