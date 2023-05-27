@@ -95,7 +95,7 @@
 
 ```json
 {
-  "id":1
+  "id":1,
   "password": "password123",
   "lock":False,
 }
