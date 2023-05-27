@@ -911,27 +911,1181 @@
 <h2 id="_1">搜索所有用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于超级管理员进行全部用户的筛选和搜索</p>
 <p><code>[POST] /api/get_user_all/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>待搜索的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的姓名</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>str</td>
+<td>待搜索的业务实体名称</td>
+</tr>
+<tr>
+<td>department</td>
+<td>str</td>
+<td>待搜索的部门名称</td>
+</tr>
+<tr>
+<td>character</td>
+<td>int</td>
+<td>待搜索的角色</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>bool</td>
+<td>待搜索的用户状态</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，id、lock、character为精确匹配，name、entity、department为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有用户信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;n&quot;,
+        &quot;entity&quot;: &quot;a&quot;,
+        &quot;department&quot;:&quot;b&quot;,
+        &quot;character&quot;:1,
+        &quot;lock&quot;:false,
+        &quot;page&quot;:1
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:false,
+    &quot;email&quot; :&quot;&quot; 
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:false, 
+    &quot;email&quot; :&quot;&quot; 
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_2">搜索部门下所有用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员进行自身部门下全部用户的筛选和搜索</p>
 <p><code>[POST] /api/get_user_department/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>待搜索的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的姓名</td>
+</tr>
+<tr>
+<td>character</td>
+<td>int</td>
+<td>待搜索的角色</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>bool</td>
+<td>待搜索的用户状态</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，id、lock、character为精确匹配，name为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有用户信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;n&quot;,
+        &quot;character&quot;:1,
+        &quot;lock&quot;:false,
+        &quot;page&quot;:1
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:false,
+    &quot;email&quot; :&quot;&quot; 
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:false, 
+    &quot;email&quot; :&quot;&quot; 
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_3">搜索业务实体下所有用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员进行自身业务实体下全部用户的筛选和搜索</p>
 <p><code>[POST] /api/get_user_entity/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>待搜索的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的姓名</td>
+</tr>
+<tr>
+<td>department</td>
+<td>str</td>
+<td>待搜索的部门名称</td>
+</tr>
+<tr>
+<td>character</td>
+<td>int</td>
+<td>待搜索的角色</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>bool</td>
+<td>待搜索的用户状态</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，id、lock、character为精确匹配，name、department为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有用户信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;n&quot;,
+        &quot;department&quot;:&quot;b&quot;,
+        &quot;character&quot;:1,
+        &quot;lock&quot;:false,
+        &quot;page&quot;:1
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:false,
+    &quot;email&quot; :&quot;&quot; 
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:false, 
+    &quot;email&quot; :&quot;&quot; 
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_4">搜索业务实体下登录登出日志接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员进行自身业务实体下登录登出日志的筛选和搜索</p>
 <p><code>[POST] /api/get_logjournal/{session}/{entity_name}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>str</td>
+<td>待搜索的日志日期</td>
+</tr>
+<tr>
+<td>info</td>
+<td>str</td>
+<td>待搜索的日志信息</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的用户名称</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，date为精确匹配，name、info为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有日志信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+<tr>
+<td>1</td>
+<td>你无此权限</td>
+<td>访问日志的系统管理员不属于传入的entity_name对应的业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;date&quot;:&quot;2020-01-11&quot; ,
+        &quot;info&quot;: &quot;ab&quot;,
+        &quot;name&quot;:&quot;a&quot;,
+        &quot;page&quot;:1
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:2,
+  &quot;data&quot;:[
+  {
+    &quot;time&quot;:2023-05-08 09:52:15,
+    &quot;user&quot;:&quot;liusn&quot;,
+    &quot;message&quot;:&quot;liusn登录了启源资产管理系统&quot;,
+  },
+  {
+    &quot;time&quot;:2023-05-08 09:51:13,
+    &quot;user&quot;:&quot;liusn&quot;,
+    &quot;message&quot;:&quot;liusn登出了启源资产管理系统&quot;,
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_5">搜索业务实体下关键操作日志接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员进行自身业务实体下关键操作日志的筛选和搜索</p>
 <p><code>[POST] /api/get_operationjournal/{session}/{entity_name}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>str</td>
+<td>待搜索的日志日期</td>
+</tr>
+<tr>
+<td>info</td>
+<td>str</td>
+<td>待搜索的日志信息</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的用户名称</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，date为精确匹配，name、info为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有日志信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+<tr>
+<td>1</td>
+<td>你无此权限</td>
+<td>访问日志的系统管理员不属于传入的entity_name对应的业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;date&quot;:&quot;2020-01-11&quot; ,
+        &quot;info&quot;: &quot;ab&quot;,
+        &quot;name&quot;:&quot;a&quot;,
+        &quot;page&quot;:1
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;:[
+  {
+    &quot;time&quot;:2023-05-08 09:58:08,
+    &quot;user&quot;:&quot;manager&quot;,
+    &quot;opeation_type&quot;:3,
+    &quot;object_type&quot;:2,
+    &quot;object_name&quot;:&quot;CST&quot;,
+    &quot;message&quot;:&quot;管理员manager创建了部门CST&quot;
+  },
+  {
+    &quot;time&quot;:2023-05-08 09:58:06,
+    &quot;user&quot;:&quot;manager&quot;,
+    &quot;operation_type&quot;:4,
+    &quot;object_type&quot;:2,
+    &quot;object_name&quot;:&quot;grade_1&quot;,
+    &quot;message&quot;:&quot;管理员manager删除了部门grade_1&quot;
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_6">搜索未领用资产接口</h2>
 <p><strong>接口描述</strong>：此接口用于一级用户对某个资产管理员持有的未领用资产进行筛选和搜索</p>
 <p><code>[POST] /api/search_unallocated_assets/{session}/{manager_name}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>待搜索的资产的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的资产的名称</td>
+</tr>
+<tr>
+<td>price_inf</td>
+<td>double</td>
+<td>待搜索的资产的价值下限</td>
+</tr>
+<tr>
+<td>price_sup</td>
+<td>double</td>
+<td>待搜索的资产的价值上限</td>
+</tr>
+<tr>
+<td>description</td>
+<td>str</td>
+<td>该资产的描述</td>
+</tr>
+<tr>
+<td>asset_tree_node</td>
+<td>str</td>
+<td>要搜索的资产挂载的资产分类树节点</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，id为精确匹配，asset_tree_node、description、name为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）
+price为范围匹配（即在[price_inf,price_sup]区间内均满足）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有日志信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+<tr>
+<td>2</td>
+<td>所选资产管理员非法</td>
+<td>所选资产管理员非法(如不存在或者不在一个部门下等)</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;asset_tree_node&quot;: &quot;默认分类&quot;,
+        &quot;id&quot;: 520,
+        &quot;name&quot;: &quot;Love&quot;,
+        &quot;price_inf&quot;: 52.00,
+        &quot;price_sup&quot;: 520.0,
+        &quot;description&quot;: &quot;No need to explain&quot;,
+        &quot;page&quot;: 1,
+}
+
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;:[
+    {
+  &quot;id&quot;:1,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aaa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  },
+  {
+  &quot;id&quot;:2,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_7">搜索个人资产接口</h2>
 <p><strong>接口描述</strong>：此接口用于一级用户对个人拥有的全部资产进行筛选和搜索</p>
 <p><code>[POST] /api/search_personal_assets/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>待搜索的资产的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的资产的名称</td>
+</tr>
+<tr>
+<td>price_inf</td>
+<td>double</td>
+<td>待搜索的资产的价值下限</td>
+</tr>
+<tr>
+<td>price_sup</td>
+<td>double</td>
+<td>待搜索的资产的价值上限</td>
+</tr>
+<tr>
+<td>description</td>
+<td>str</td>
+<td>该资产的描述</td>
+</tr>
+<tr>
+<td>asset_tree_node</td>
+<td>str</td>
+<td>要搜索的资产挂载的资产分类树节点</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，id为精确匹配，asset_tree_node、description、name为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）
+price为范围匹配（即在[price_inf,price_sup]区间内均满足）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有日志信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;asset_tree_node&quot;: &quot;默认分类&quot;,
+        &quot;id&quot;: 520,
+        &quot;name&quot;: &quot;Love&quot;,
+        &quot;price_inf&quot;: 52.00,
+        &quot;price_sup&quot;: 520.0,
+        &quot;description&quot;: &quot;No need to explain&quot;,
+        &quot;page&quot;: 1,
+}
+
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;:[
+    {
+  &quot;id&quot;:1,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aaa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  },
+  {
+  &quot;id&quot;:2,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_8">搜索资产接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员对某资产分类树节点下全部资产进行筛选和搜索</p>
 <p><code>[POST] /api/search_assets/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>待搜索的资产的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>待搜索的资产的名称</td>
+</tr>
+<tr>
+<td>price_inf</td>
+<td>double</td>
+<td>待搜索的资产的价值下限</td>
+</tr>
+<tr>
+<td>price_sup</td>
+<td>double</td>
+<td>待搜索的资产的价值上限</td>
+</tr>
+<tr>
+<td>description</td>
+<td>str</td>
+<td>该资产的描述</td>
+</tr>
+<tr>
+<td>asset_tree_node</td>
+<td>str</td>
+<td>要搜索的资产挂载的资产分类树节点</td>
+</tr>
+<tr>
+<td>page</td>
+<td>bool</td>
+<td>要求的页面位置</td>
+</tr>
+</tbody>
+</table>
+<p>请求参数中，id为精确匹配，asset_tree_node、description、name为模糊匹配（即如果输入为"a",则"ab"、"babb"均可与之匹配）
+price为范围匹配（即在[price_inf,price_sup]区间内均满足）</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的所有日志信息(至少为1至多为6)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>请求的页面数超过了总页面数</td>
+<td>传入的page数过大超过了总page数，无法成功返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求的页面数必须为正整数</td>
+<td>传入的page数小于等于0，不合法</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+        &quot;asset_tree_node&quot;: &quot;默认分类&quot;,
+        &quot;id&quot;: 520,
+        &quot;name&quot;: &quot;Love&quot;,
+        &quot;price_inf&quot;: 52.00,
+        &quot;price_sup&quot;: 520.0,
+        &quot;description&quot;: &quot;No need to explain&quot;,
+        &quot;page&quot;: 1,
+}
+
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;:[
+    {
+  &quot;id&quot;:1,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aaa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  },
+  {
+  &quot;id&quot;:2,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
 
 
 

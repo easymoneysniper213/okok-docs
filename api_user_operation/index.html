@@ -1114,6 +1114,7 @@
 }
 </code></pre>
 
+
 </details>
 <details>
   <summary>响应</summary>
@@ -1124,6 +1125,7 @@
   &quot;info&quot;:&quot;Succeed&quot;,
 }
 </code></pre>
+
 
 </details>
 </details>
@@ -1204,6 +1206,7 @@
 }
 </code></pre>
 
+
 </details>
 <details>
   <summary>响应</summary>
@@ -1214,6 +1217,7 @@
   &quot;info&quot;:&quot;Success&quot;,
 }
 </code></pre>
+
 
 </details>
 </details>
@@ -1278,6 +1282,7 @@
   }
 }
 </code></pre>
+
 
 </details>
 </details>
@@ -1369,6 +1374,7 @@
 }
 </code></pre>
 
+
 </details>
 </details>
 
@@ -1427,6 +1433,7 @@
 }
 </code></pre>
 
+
 </details>
 <details>
   <summary>响应</summary>
@@ -1437,6 +1444,7 @@
    &quot;info&quot;:&quot;Succeed&quot;,
 }
 </code></pre>
+
 
 </details>
 </details>
@@ -1501,6 +1509,7 @@
 }
 </code></pre>
 
+
 </details>
 <details>
   <summary>响应</summary>
@@ -1512,33 +1521,553 @@
 }
 </code></pre>
 
+
 </details>
 </details>
 
 <h2 id="_7">获取同部门资产管理员接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取同部门的资产管理员</p>
 <p><code>[GET] /api/asset_manager/{session}/{department_name}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该部门的所有资产管理员信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>未找到目标部门</td>
+<td>根据url路径传入的部门名称找不到对应部门</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{&quot;code&quot;:0,
+ &quot;data&quot;:[
+ {
+   &quot;id&quot;:1,
+   &quot;name&quot;:&quot;liusn&quot;,
+ },
+ {
+   &quot;id&quot;:2,
+   &quot;name&quot;:&quot;xpy&quot;,
+ },
+]
+}
+</code></pre>
+
+
+
+</details>
+
 <h2 id="_8">获取同业务实体资产管理员接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取同业务实体下所有的资产管理员</p>
 <p><code>[GET] /api/asset_manager_entity/{session}/{entity_name}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该业务实体的所有资产管理员信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>未找到目标业务实体</td>
+<td>根据url路径传入的业务实体名称找不到对应业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{&quot;code&quot;:0,
+ &quot;data&quot;:[
+ {
+   &quot;id&quot;:1,
+   &quot;name&quot;:&quot;liusn&quot;,
+ },
+ {
+   &quot;id&quot;:2,
+   &quot;name&quot;:&quot;xpy&quot;,
+ },
+]
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_9">管理员获取同业务实体全部用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于管理员获取同业务实体下所有的用户</p>
 <p><code>[GET] /api/user_entity/{session}/{entity_name}/{page}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该业务实体的所有用户信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>对应的业务实体不存在</td>
+<td>根据url路径传入的业务实体名称找不到对应业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;password&quot;: &quot;password123&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:False,
+    &quot;email&quot; :&quot;&quot; 
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;password&quot;: &quot;password123&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:False, 
+    &quot;email&quot; :&quot;&quot; 
+  }
+  ]
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_10">一级用户获取同业务实体全部用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于一级用户获取同业务实体下所有的用户</p>
 <p><code>[GET] /api/user_entity4user/{session}/{page}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该业务实体的所有用户信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p>此接口除鉴权操作外无其他失败响应状态</p>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;password&quot;: &quot;password123&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot; :&quot;&quot; 
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;password&quot;: &quot;password123&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot; :&quot;&quot; 
+  }
+  ]
+}
+</code></pre>
+
+
+
+</details>
+
 <h2 id="_11">用户获取个人信息接口</h2>
 <p><strong>接口描述</strong>：此接口用于用户获取自己的个人信息</p>
 <p><code>[GET] /api/cur_entity/{session}/{page}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entityName</td>
+<td>str</td>
+<td>用户属于的业务实体的名字(若无则为"")</td>
+</tr>
+<tr>
+<td>departmentName</td>
+<td>str</td>
+<td>用户属于的部门的名字(若无则为"")</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>用户的名字</td>
+</tr>
+<tr>
+<td>feishu_name</td>
+<td>str</td>
+<td>用户的飞书用户名</td>
+</tr>
+<tr>
+<td>feishu_phone</td>
+<td>str</td>
+<td>用户的飞书电话号码</td>
+</tr>
+<tr>
+<td>email</td>
+<td>str</td>
+<td>用户的锁定状态</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>int</td>
+<td>用户的锁定状态</td>
+</tr>
+</tbody>
+</table>
+<p>此接口除鉴权操作外无其他失败响应状态</p>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;data&quot;: 
+  {
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot;:&quot;&quot;,
+    &quot;lock&quot;:0,
+    &quot;feishu_name&quot;:&quot;xpy&quot;,
+    &quot;feishu_phone&quot;:114514
+  }
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_12">管理员获取同部门下全部用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于管理员获取同部门下所有的用户</p>
 <p><code>[GET] /api/user_department/{session}/{department_name}/{page}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该部门的所有用户信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>对应的部门未找到</td>
+<td>根据url路径中的部门名字找不到对应部门</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;password&quot;: &quot;password123&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:False,
+    &quot;email&quot; :&quot;&quot; 
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;password&quot;: &quot;password123&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;character&quot;:1,
+    &quot;lock&quot;:False, 
+    &quot;email&quot; :&quot;&quot; 
+  }
+  ]
+}
+</code></pre>
+
+
+
+</details>
+
 <h2 id="_13">一级用户获取同部门下全部用户接口</h2>
 <p><strong>接口描述</strong>：此接口用于一级用户获取同部门下所有的用户</p>
 <p><code>[GET] /api/user_department_2/{session}/{department_name}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该部门的所有用户信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>对应的部门未找到</td>
+<td>根据url路径中的部门名字找不到对应部门</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot; :&quot;&quot;
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot; :&quot;&quot;
+  }
+  ]
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_14">资产管理员获取某部门下全部资产管理员接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取某部门下全部资产管理员</p>
 <p><code>[GET] /api/managers_department/{session}/{department_name}</code></p>
+<p>此接口方法为GET，无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>为包含该部门的所有资产管理员信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>对应的部门未找到</td>
+<td>根据url路径中的部门名字找不到对应部门</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;data&quot;: [
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;: &quot;example_user&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot; :&quot;&quot;,
+    &quot;lock&quot;:0,
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;user2&quot;,
+    &quot;entityName&quot; : &quot;aba&quot;,
+    &quot;departmentName&quot;:&quot;tsinghua&quot;,
+    &quot;email&quot; :&quot;&quot;,
+    &quot;lock&quot;:0,
+  }
+  ]
+}
+</code></pre>
+
+
+</details>
 
 
 

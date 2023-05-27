@@ -897,24 +897,494 @@
 <h2 id="_1">获取业务实体下全部部门接口</h2>
 <p><strong>接口描述</strong>：此接口用于管理员获取自己业务实体下下全部部门</p>
 <p><code>[GET] /api/all_departments/{session}/{entity_name}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该业务实体下所有的部门列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>指定业务实体不存在</td>
+<td>根据传入的entity_name找不到对应的业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code>{
+  &quot;code&quot;:0,
+  &quot;data&quot;:[
+   {
+     &quot;id&quot;:1,
+     &quot;name&quot;:&quot;CST1&quot;,
+   },
+   {
+     &quot;id&quot;:3,
+     &quot;name&quot;:&quot;CST2&quot;,
+   }
+]
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_2">获取某部门全部合法父部门接口</h2>
-<p><strong>接口描述</strong>：此接口用于系统管理员获取某部门全部合法父部门</p>
+<p><strong>接口描述</strong>：此接口用于系统管理员获取业务实体下某部门的的全部合法父部门，即可以作为某部门的父部门的所有部门(去除了某部门现有父部门和子部门的其他部门)</p>
 <p><code>[GET] /api/valid_parent_departments/{session}/{department_name}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该业务实体下所有的合法父部门列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>当前部门不存在</td>
+<td>根据传入的部门名字找不到对应部门</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code>{
+  &quot;code&quot;:0,
+  &quot;data&quot;:[
+   {
+     &quot;id&quot;:1,
+     &quot;name&quot;:&quot;CST1&quot;,
+   },
+   {
+     &quot;id&quot;:3,
+     &quot;name&quot;:&quot;CST2&quot;,
+   }
+]
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_3">创建部门接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员创建部门</p>
 <p><code>[POST] /api/department/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entity</td>
+<td>str</td>
+<td>部门对应的业务实体的名字</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>str</td>
+<td>部门的父部门，若无父部门则传""</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>部门的名字</td>
+</tr>
+</tbody>
+</table>
+<p>无成功响应参数，接口调用成功则该部门直接被创建，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>输入业务实体名字不合法</td>
+<td>传入业务实体名字为空串或只带空格的字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>输入部门名字不合法</td>
+<td>传入部门名字为空串或只带空格的字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>给出的业务实体未找到</td>
+<td>根据传入的业务实体名字未找到对应的业务实体</td>
+</tr>
+<tr>
+<td>2</td>
+<td>一个业务实体下最多有两百个部门</td>
+<td>该业务实体下部门爆满超过200，若想创建请先删除无关部门</td>
+</tr>
+<tr>
+<td>2</td>
+<td>已存在同名的部门</td>
+<td>违背了同一业务实体下不能有同名部门的原则</td>
+</tr>
+<tr>
+<td>2</td>
+<td>给定的父部门不存在</td>
+<td>根据传入的父部门名字未找到对应的父部门</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不可以将当前部门的父部门设定为另一个业务实体下的部门</td>
+<td>父部门属于的业务实体并不属于该业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;entity&quot;:&quot;a&quot;
+  &quot;parent&quot;:&quot;&quot;
+  &quot;name&quot;:&quot;清华大学计算机系&quot;
+}
+</code></pre>
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;info&quot;:Succeed,
+}
+</code></pre>
+
+
+
+</details>
+
+</details>
+
 <h2 id="_4">获取根部门接口</h2>
-<p><strong>接口描述</strong>：此接口用于系统管理员获取业务实体下所有根部门</p>
+<p><strong>接口描述</strong>：本接口用于获取业务实体下的顶层部门列表，规定只有超级管理员可以获取所有业务实体中的顶层部门列表，其他用户仅可获取自己所处业务实体的顶层部门列表。</p>
 <p><code>[GET] /api/department/{session}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>业务实体下所有顶层部门列表</td>
+</tr>
+</tbody>
+</table>
+<p>此接口除鉴权外无其他失败响应状态</p>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0
+  &quot;data&quot;:[
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;:&quot;tsinghua1&quot;,
+    &quot;entityName&quot;:&quot;tsinghua&quot;,
+    &quot;userNumber&quot;:1,
+    &quot;subDepartmentNumber&quot;:2,
+  },
+  {
+    &quot;id&quot;:2,
+    &quot;name&quot;:&quot;tsinghua2&quot;,
+    &quot;entityName&quot;:&quot;tsinghua&quot;,
+    &quot;userNumber&quot;:1,
+    &quot;subDepartmentNumber&quot;:2,
+  },
+  ]
+}
+</code></pre>
+
+
+
+</details>
+
 <h2 id="_5">修改部门信息接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员修改业务实体下所有部门信息</p>
 <p><code>[PUT] /api/department/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>修改部门的id</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>str</td>
+<td>若要修改部门的父部门，则传入父部门名字，若不需要则传入之前的父部门名字(若无则为空串)</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>若要修改部门的名字，则传入新的部门名字，若不需要则传入之前的名字</td>
+</tr>
+</tbody>
+</table>
+<p>无成功响应参数，接口调用成功则该部门信息被修改成功，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>输入部门名不合法</td>
+<td>传入部门名字为空串或只带空格的字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>该ID的部门不存在</td>
+<td>根据传入的id找不到相关部门</td>
+</tr>
+<tr>
+<td>2</td>
+<td>已存在同名的部门</td>
+<td>新名字对应的部门已经在该业务实体下存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>给出的父部门不存在</td>
+<td>根据传入的父部门名字未找到对应的父部门</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不可以将部门移至另一个业务实体下</td>
+<td>父部门属于的业务实体与部门的业务实体不同，设定父部门只能在当前业务实体下</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不可以将该部门的子部门设定为父部门</td>
+<td>新的父部门不可属于部门的子部门，否则出现父子循环关系</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;id&quot;:1
+  &quot;parent&quot;:&quot;&quot;
+  &quot;name&quot;:&quot;清华大学计算机系&quot;
+}
+</code></pre>
+
+
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;: 0,
+  &quot;info&quot;:Succeed,
+}
+</code></pre>
+
+
+
+</details>
+
+</details>
+
 <h2 id="_6">获取子部门信息接口</h2>
-<p><strong>接口描述</strong>：此接口用于系统管理员获取某个部门全部子部门信息</p>
+<p><strong>接口描述</strong>：该接口用于获取一个部门的下一层子部门，若用户不为超级管理员，则必须保证访问的部门与其所属业务实体一致，超级管理员则无此限制。</p>
 <p><code>[GET] /api/sub_department/{session}/{department_name}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>业务实体下所有顶层部门列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>给定的父部门不存在</td>
+<td>根据url路径中的department_name找不到对应父部门</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0
+  &quot;data&quot;:[
+  {
+    &quot;id&quot;:1,
+    &quot;name&quot;:&quot;tsinghua1&quot;,
+    &quot;userNumber&quot;:3,
+    &quot;subDepartmentNumber&quot;:1,
+  },
+  {
+    &quot;id&quot;:2,
+    &quot;name&quot;:&quot;tsinghua2&quot;,
+    &quot;userNumber&quot;:3,
+    &quot;subDepartmentNumber&quot;:1,
+  },
+  ]
+}
+</code></pre>
+
+
+
+</details>
+
 <h2 id="_7">删除部门信息接口</h2>
-<p><strong>接口描述</strong>：此接口用于系统管理员删除某个部门</p>
+<p><strong>接口描述</strong>：此接口用于系统管理员删除某个部门，规定只能删除叶节点，且该部门下不可以有用户。</p>
 <p><code>[DELETE] /api/department/{session}/{department_name}</code></p>
+<p>此接口方法为DELETE，故无请求参数</p>
+<p>无成功响应参数，接口调用成功则部门直接被删除，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>该名称的部门不存在</td>
+<td>根据url路径传入的department_name找不到要删除的部门</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不可以删除非叶节点的部门</td>
+<td>若该部门有子部门，则规定不可删除</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不可以删除有用户的部门</td>
+<td>若该部门有用户，则规定不可删除</td>
+</tr>
+</tbody>
+</table>
 
 
 

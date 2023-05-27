@@ -841,12 +841,370 @@
 <h2 id="_1">创建请求接口</h2>
 <p><strong>接口描述</strong>：此接口用于用户向资产管理员发送请求</p>
 <p><code>[POST] /api/pending_request/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initiator</td>
+<td>str</td>
+<td>请求的发起人名字(用户)</td>
+</tr>
+<tr>
+<td>participant</td>
+<td>str</td>
+<td>请求的接收者名字(资产管理员)</td>
+</tr>
+<tr>
+<td>target</td>
+<td>str</td>
+<td>请求涉及到的目标人名字(资产转移时表示资产转移方，其他情况不需要置为空串)</td>
+</tr>
+<tr>
+<td>asset_id</td>
+<td>int</td>
+<td>审批涉及到的资产的id</td>
+</tr>
+<tr>
+<td>type</td>
+<td>int</td>
+<td>审批涉及到的操作类型</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>审批涉及到的数量型资产的数量(若为条目型资产则强制为1)</td>
+</tr>
+</tbody>
+</table>
+<p>无成功响应参数，接口调用成功则审批单直接发送给资产管理员，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>提交请求的用户不存在</td>
+<td>根据传入的initiator找不到对应用户</td>
+</tr>
+<tr>
+<td>2</td>
+<td>提交请求的用户的角色不合法</td>
+<td>提交请求一方不为普通用户</td>
+</tr>
+<tr>
+<td>3</td>
+<td>通过请求的用户不存在</td>
+<td>根据传入的participant找不到对应用户</td>
+</tr>
+<tr>
+<td>8</td>
+<td>通过请求的用户的角色不合法</td>
+<td>接收请求一方不为资产管理员，或二者不在同一个业务实体下</td>
+</tr>
+<tr>
+<td>9</td>
+<td>未找到目标用户</td>
+<td>根据传入的target找不到对应用户</td>
+</tr>
+<tr>
+<td>8</td>
+<td>通过资产的用户的角色不合法</td>
+<td>请求涉及到的目标人不为普通用户，或二者不在同一业务实体下</td>
+</tr>
+<tr>
+<td>5</td>
+<td>申请类型不合法</td>
+<td>申请类型type不为1、2、3、4之一</td>
+</tr>
+<tr>
+<td>4</td>
+<td>所涉及的资产不存在</td>
+<td>根据传入的资产id找不到对应资产</td>
+</tr>
+<tr>
+<td>3</td>
+<td>f"资产{tar_asset.name}不是数量型资产，请重新检查"</td>
+<td>资产类型为条目型资产但是数量却不为1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>f"资产{tar_asset.name}数量不足"</td>
+<td>数量型资产的现有数量小于count</td>
+</tr>
+<tr>
+<td>250</td>
+<td>如果您不想获得此资产，请什么都不做，而不是浪费时间</td>
+<td>count传入不合法，count不为正整数，无意义</td>
+</tr>
+<tr>
+<td>6</td>
+<td>不要那么操之过急，操之过急也没用</td>
+<td>检测到多个冲突审批单存在，说明用户点击过快，不会提交多次审批</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;initiator&quot;:&quot;sbsbsb&quot;,
+  &quot;participant&quot;:&quot;114514&quot;,
+  &quot;target&quot;:&quot;lyq&quot;,
+  &quot;asset_id&quot;:&quot;1&quot;,
+  &quot;type&quot;:1,
+  &quot;count&quot;:1,
+}
+</code></pre>
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:Succeed,
+}
+</code></pre>
+
+
+
+</details>
+
+</details>
+
 <h2 id="_2">返回请求结果接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员向用户发送请求结果</p>
 <p><code>[PUT] /api/return_pending_request/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>返回的审批请求的id</td>
+</tr>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>审批结果</td>
+</tr>
+</tbody>
+</table>
+<p>无成功响应参数，接口调用成功则审批单直接返回给用户，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>资产管理员下的该请求不存在</td>
+<td>根据传入的id找不到该请求，或该id对应的请求不在此资产管理员下</td>
+</tr>
+<tr>
+<td>7</td>
+<td>该审批单已失效，无法通过此申请</td>
+<td>由于资产数量等在审批通过前发生变更，导致此次审批无法通过</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;id&quot;:1,
+  &quot;result&quot;:1,
+}
+</code></pre>
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:Succeed,
+}
+</code></pre>
+
+
+</details>
+
+</details>
+
 <h2 id="_3">获取待处理请求列表接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取待处理请求列表</p>
 <p><code>[GET] /api/pending_request_list/{session}/{asset_manager_name}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<p>一个由审批单组成的列表data，其中每一项包含以下项信息</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>审批请求的id</td>
+</tr>
+<tr>
+<td>initiatorName</td>
+<td>str</td>
+<td>请求发起用户的名字</td>
+</tr>
+<tr>
+<td>participantName</td>
+<td>str</td>
+<td>请求接收方资产管理员的名字</td>
+</tr>
+<tr>
+<td>targetName</td>
+<td>str</td>
+<td>请求涉及到的目标用户的名字</td>
+</tr>
+<tr>
+<td>assetName</td>
+<td>str</td>
+<td>请求涉及到的资产名字</td>
+</tr>
+<tr>
+<td>assetID</td>
+<td>int</td>
+<td>请求涉及到的资产id</td>
+</tr>
+<tr>
+<td>type</td>
+<td>int</td>
+<td>请求涉及到的操作类型</td>
+</tr>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>请求结果</td>
+</tr>
+<tr>
+<td>request_time</td>
+<td>str</td>
+<td>请求发起的时间</td>
+</tr>
+<tr>
+<td>review_time</td>
+<td>str</td>
+<td>请求被返回的时间(若还未返回则默认为无限远时间)</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>请求涉及到的资产数量</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>int</td>
+<td>请求的有效性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>对应名字的资产管理员不存在</td>
+<td>根据url传入的名字找不到对应资产管理员</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;data&quot;:[
+         {
+          &quot;id&quot;:1,
+          &quot;initiatorName&quot;:&quot;liusn&quot;,
+          &quot;participantName&quot;:&quot;xpy&quot;,
+          &quot;targetName&quot;:&quot;&quot;,
+          &quot;assetName&quot;:&quot;chairs&quot;,
+          &quot;assetID&quot;:23,
+          &quot;type&quot;:1,
+          &quot;result&quot;:0,
+          &quot;request_time&quot;:&quot;2023-05-27 15:30:45&quot;,
+          &quot;review_time&quot;:&quot;2023-05-27 15:32:45&quot;,
+          &quot;count&quot;:12,
+          &quot;valid&quot;:1,
+         },
+         {
+          &quot;id&quot;:2,
+          &quot;initiatorName&quot;:&quot;liusn&quot;,
+          &quot;participantName&quot;:&quot;xpy&quot;,
+          &quot;targetName&quot;:&quot;&quot;,
+          &quot;assetName&quot;:&quot;tables&quot;,
+          &quot;assetID&quot;:25,
+          &quot;type&quot;:2,
+          &quot;result&quot;:1,
+          &quot;request_time&quot;:&quot;2023-05-26 15:30:45&quot;,
+          &quot;review_time&quot;:&quot;2023-05-26 15:32:45&quot;,
+          &quot;count&quot;:15,
+          &quot;valid&quot;:1,
+          },
+        ]
+}
+</code></pre>
+
+
+
+</details>
 
 
 

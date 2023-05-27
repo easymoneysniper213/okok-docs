@@ -827,9 +827,148 @@
 <h2 id="_1">系统管理员获取业务实体用户登录登出日志接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员获取自身业务实体登录登出日志</p>
 <p><code>[GET] /api/logjournal/{session}/{entity_name}/{page}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的日志信息(至少为1至多为8)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>你无此权限</td>
+<td>访问日志的系统管理员不属于传入的entity_name对应的业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:2,
+  &quot;data&quot;:[
+  {
+    &quot;time&quot;:2023-05-08 09:52:15,
+    &quot;user&quot;:&quot;liusn&quot;,
+    &quot;message&quot;:&quot;liusn登录了启源资产管理系统&quot;,
+  },
+  {
+    &quot;time&quot;:2023-05-08 09:51:13,
+    &quot;user&quot;:&quot;liusn&quot;,
+    &quot;message&quot;:&quot;liusn登出了启源资产管理系统&quot;,
+  }
+  ]
+}
+</code></pre>
+
+
+</details>
+
 <h2 id="_2">系统管理员获取业务实体用户关键操作日志接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员获取自身业务实体用户关键操作日志</p>
 <p><code>[GET] /api/operationjournal/{session}/{entity_name}/{page}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pages</td>
+<td>int</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>该页面的日志信息(至少为1至多为8)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>你无此权限</td>
+<td>访问日志的系统管理员不属于传入的entity_name对应的业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;pages&quot;:1,
+  &quot;data&quot;:[
+  {
+    &quot;time&quot;:2023-05-08 09:58:08,
+    &quot;user&quot;:&quot;manager&quot;,
+    &quot;opeation_type&quot;:3,
+    &quot;object_type&quot;:2,
+    &quot;object_name&quot;:&quot;CST&quot;,
+    &quot;message&quot;:&quot;管理员manager创建了部门CST&quot;
+  },
+  {
+    &quot;time&quot;:2023-05-08 09:58:06,
+    &quot;user&quot;:&quot;manager&quot;,
+    &quot;operation_type&quot;:4,
+    &quot;object_type&quot;:2,
+    &quot;object_name&quot;:&quot;grade_1&quot;,
+    &quot;message&quot;:&quot;管理员manager删除了部门grade_1&quot;
+  }
+  ]
+}
+</code></pre>
+
+
+</details>
 
 
 

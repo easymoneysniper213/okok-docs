@@ -531,42 +531,42 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    接口
+    创建导出任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    接口
+    获取指定导出任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    接口
+    获取业务实体下的异步任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    异步任务创建资产接口
+    创建异步任务导入资产接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    获取失败任务接口
+    获取导入失败任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    接口
+    重新评测失败的导入异步任务接口
   </a>
   
 </li>
@@ -825,42 +825,42 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    接口
+    创建导出任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    接口
+    获取指定导出任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    接口
+    获取业务实体下的异步任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    异步任务创建资产接口
+    创建异步任务导入资产接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    获取失败任务接口
+    获取导入失败任务接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    接口
+    重新评测失败的导入异步任务接口
   </a>
   
 </li>
@@ -882,24 +882,377 @@
 
   <h1>异步任务模块</h1>
 
-<h2 id="_1">接口</h2>
-<p><strong>接口描述</strong>：此接口用于</p>
-<p><code>[GET] /api/export_task/{session}</code></p>
-<h2 id="_2">接口</h2>
-<p><strong>接口描述</strong>：此接口用于</p>
+<h2 id="_1">创建导出任务接口</h2>
+<p><strong>接口描述</strong>：此接口用于创建导出资产任务</p>
+<p><code>[POST] /api/export_task/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<p>请求参数为一个list，该list包含需要导出的资产id。</p>
+<p>无成功响应参数，接口调用成功则创建导出任务，配合 <code>[GET] /api/export_task/{session}/{id}</code>API即可查看导出的资产信息。</p>
+<p>无失败响应状态，导出任务一定成功，对导出失败的资产加以记录，但该API接口一定成功退出。</p>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+
+<pre><code class="language-json">{
+  [
+    1,
+    2,
+    3,
+  ]
+}
+</code></pre>
+
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;info&quot;:Succeed,
+}
+</code></pre>
+
+
+</details>
+
+</details>
+
+<h2 id="_2">获取指定导出任务接口</h2>
+<p><strong>接口描述</strong>：此接口用于查询指定id的导出异步任务信息</p>
 <p><code>[GET] /api/export_task/{session}/{id}</code></p>
-<h2 id="_3">接口</h2>
-<p><strong>接口描述</strong>：此接口用于</p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>一个列表，列表信息为所有成功导出的资产信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>该API只可用于查看导出异步任务的成功记录</td>
+<td>根据id索引到的异步任务信息不为导出任务</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;data&quot;:[
+    &quot;id&quot;: 1,
+    &quot;parentName&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;chairs,
+    &quot;assetClass&quot;: 0,
+    &quot;userName&quot;: liusn
+    &quot;price&quot;: 10.00,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;position&quot;: &quot;&quot;,
+    &quot;expire&quot;: 0,
+    &quot;count&quot;: 10,
+    &quot;assetTree&quot;: &quot;默认分类&quot;,
+    &quot;departmentName&quot;: &quot;CST&quot;,
+    &quot;create_time&quot;: 2023-05-27,
+    &quot;deadline&quot;: 10,
+    &quot;initial_price&quot;: 10.00,
+    &quot;warning_amount&quot;: -1,
+    &quot;warning_date&quot;: -1,
+    &quot;expire_date&quot;: 10,
+     &quot;status&quot;: 1,
+  }
+  ]
+}
+</code></pre>
+
+
+
+</details>
+
+<h2 id="_3">获取业务实体下的异步任务接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取指定业务实体下的异步任务列表</p>
 <p><code>[GET] /api/async_task/{session}</code></p>
-<h2 id="_4">异步任务创建资产接口</h2>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功返回参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>一个列表，列表信息为异步任务相关信息</td>
+</tr>
+</tbody>
+</table>
+<p>此接口除鉴权操作外无其他失败响应状态</p>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;data&quot;:[
+   {
+     &quot;id&quot;: 1,
+     &quot;manager&quot;: &quot;liusn&quot;,
+     &quot;create_time&quot;: &quot;2023-05-26 19:28:33&quot;,
+     &quot;number_need&quot;: 100,
+     &quot;number_succeed&quot;: 98,
+     &quot;finish&quot;: 2,
+     &quot;port_type&quot;: 1,
+   },
+   {
+     &quot;id&quot;: 2,
+     &quot;manager&quot;: &quot;liusn1&quot;,
+     &quot;create_time&quot;: &quot;2023-05-26 19:28:26&quot;,
+     &quot;number_need&quot;: 10,
+     &quot;number_succeed&quot;: 10,
+     &quot;finish&quot;: 1,
+     &quot;port_type&quot;: 1,
+   },
+]
+}
+</code></pre>
+
+
+</details>
+
+<h2 id="_4">创建异步任务导入资产接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员通过异步任务创建资产</p>
 <p><code>[POST] /api/asset/{session}</code></p>
-<h2 id="_5">获取失败任务接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员获取失败的异步任务</p>
+<p>请求参数为一个list，该list包含需要创建的资产的信息</p>
+<p>无成功响应参数，接口调用成功则任务直接创建，返回Succeed，可在任务列表中查看</p>
+<p>无失败响应状态，导入任务一定成功，对导入失败的资产加以记录，导入成功的资产直接创建，但该API接口一定成功退出。</p>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+[
+{
+ &quot;name&quot;:&quot;chairs&quot;,
+ &quot;parent&quot;:&quot;&quot;,
+ &quot;assetClass&quot;:0,
+ &quot;user&quot;:liusn,
+ &quot;price&quot;:10.0,
+ &quot;description&quot;:&quot;&quot;,
+ &quot;position&quot;:&quot;&quot;,
+ &quot;expire&quot;:0,
+ &quot;count&quot;:10,
+ &quot;assetTree&quot;:&quot;默认分类&quot;,
+ &quot;department&quot;:&quot;CST&quot;,
+ &quot;deadline&quot;:10,
+},
+]
+}
+</code></pre>
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;info&quot;:Succeed
+}
+</code></pre>
+
+
+</details>
+
+</details>
+
+<h2 id="_5">获取导入失败任务接口</h2>
+<p><strong>接口描述</strong>：此接口用于资产管理员获取指定id的导入异步任务的失败信息</p>
 <p><code>[GET] /failed_task/{session}/{id}</code></p>
-<h2 id="_6">接口</h2>
-<p><strong>接口描述</strong>：此接口</p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>包含所有导入失败资产的全部传入信息，附带失败信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>对应id的异步任务不存在</td>
+<td>根据传入的id找不到对应导入异步任务</td>
+</tr>
+<tr>
+<td>8</td>
+<td>不能通过此API获取导出的异步任务</td>
+<td>根据传入的id定位到的异步任务不为导入任务</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code>{
+[
+{
+ &quot;name&quot;:&quot;chairs&quot;,
+ &quot;parent&quot;:&quot;&quot;,
+ &quot;assetClass&quot;:0,
+ &quot;user&quot;:liusn,
+ &quot;price&quot;:10.0,
+ &quot;description&quot;:&quot;&quot;,
+ &quot;position&quot;:&quot;&quot;,
+ &quot;expire&quot;:0,
+ &quot;count&quot;:0,
+ &quot;assetTree&quot;:&quot;默认分类&quot;,
+ &quot;department&quot;:&quot;CST&quot;,
+ &quot;deadline&quot;:10,
+ &quot;message&quot;:&quot;资产数量不可小于1&quot;,
+},
+]
+}
+</code></pre>
+
+
+
+</details>
+
+<h2 id="_6">重新评测失败的导入异步任务接口</h2>
+<p><strong>接口描述</strong>：此接口用于重新评测某失败的导入异步任务</p>
 <p><code>[PUT] /failed_task/{session}/{id}</code></p>
+<p>请求参数为一个list，为之前 <code>[GET] /failed_task/{session}/{id}</code>API返回的失败信息修改后的列表，代表重新评测的资产信息(必须与导入失败的资产数量相同)</p>
+<p>无成功响应参数，接口调用成功则任务被重新评测，返回Succeed，可在任务列表中查看</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>对应id的异步任务不存在</td>
+<td>根据传入的id找不到对应导入异步任务</td>
+</tr>
+<tr>
+<td>8</td>
+<td>不能通过此API重新评测某导出任务</td>
+<td>根据传入的id定位到的异步任务不为导入任务</td>
+</tr>
+<tr>
+<td>8</td>
+<td>新传入的POST资产信息一定要与之前的失败信息长度相同</td>
+<td>所有失败信息并未被全部重新评测</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+[
+{
+ &quot;name&quot;:&quot;chairs&quot;,
+ &quot;parent&quot;:&quot;&quot;,
+ &quot;assetClass&quot;:0,
+ &quot;user&quot;:liusn,
+ &quot;price&quot;:10.0,
+ &quot;description&quot;:&quot;&quot;,
+ &quot;position&quot;:&quot;&quot;,
+ &quot;expire&quot;:0,
+ &quot;count&quot;:10,
+ &quot;assetTree&quot;:&quot;默认分类&quot;,
+ &quot;department&quot;:&quot;CST&quot;,
+ &quot;deadline&quot;:10,
+},
+]
+}
+</code></pre>
+
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;info&quot;:Succeed
+}
+</code></pre>
+
+
+
+</details>
+
+</details>
 
 
 

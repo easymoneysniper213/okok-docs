@@ -827,9 +827,155 @@
 <h2 id="url">获取url的接口</h2>
 <p><strong>接口描述</strong>：此接口用于用户获取自己能看到的url</p>
 <p><code>[GET] /api/url/{session}</code></p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>包含url所有数据项的列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>超级管理员不能得到URL列表</td>
+<td>URL列表只限普通用户、资产管理员与系统管理员查看</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;data&quot;:[
+{ 
+   &quot;id&quot;:1,
+   &quot;url&quot;:https://baidu.com,
+   &quot;name&quot;:&quot;百度&quot;,
+   &quot;authority_level&quot;:1,
+   &quot;entity&quot;:&quot;tsinghua&quot;,
+},
+]
+}
+</code></pre>
+
+
+
+</details>
+
 <h2 id="url_1">修改url的接口</h2>
 <p><strong>接口描述</strong>：此接口用于系统管理员修改不同等级用户能看到的url</p>
 <p><code>[PUT] /api/url/{session}</code></p>
+<p>请求参数为一个长度固定为5的list，list中每一项包含url列表的所有数据项，若想更改的项数少于5则请求体内为空值</p>
+<p>无成功响应参数，接口调用成功则相关第三方url被直接修改，用户可查看并返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>url列表长度错误</td>
+<td>url列表长度不为5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>检测到冲突url</td>
+<td>url出现重复</td>
+</tr>
+<tr>
+<td>2</td>
+<td>给出的业务实体不存在</td>
+<td>根据请求体内传入的业务实体名字找不到对应的业务实体</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{[
+  {
+    &quot;entity&quot;:&quot;P&quot;,
+    &quot;url&quot;:&quot;pornhub.com&quot;,
+    &quot;name&quot;:&quot;PornHub&quot;
+    &quot;character&quot;:1
+  },
+  {
+    &quot;entity&quot;:&quot;P&quot;,
+    &quot;url&quot;:&quot;pornhub.com&quot;,
+    &quot;name&quot;:&quot;PornHub&quot;
+    &quot;character&quot;:1
+  },
+  {
+    &quot;entity&quot;:&quot;&quot;,
+    &quot;url&quot;:&quot;&quot;,
+    &quot;name&quot;:&quot;&quot;
+    &quot;character&quot;:1
+  },
+  {
+    &quot;entity&quot;:&quot;P&quot;,
+    &quot;url&quot;:&quot;pornhub.com&quot;,
+    &quot;name&quot;:&quot;PornHub&quot;
+    &quot;character&quot;:1
+  },
+  {
+    &quot;entity&quot;:&quot;P&quot;,
+    &quot;url&quot;:&quot;pornhub.com&quot;,
+    &quot;name&quot;:&quot;PornHub&quot;
+    &quot;character&quot;:1
+  },
+]}
+</code></pre>
+
+
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+ &quot;code&quot;:0,
+ &quot;info&quot;:Succeed
+}
+</code></pre>
+
+
+
+`</details>`
+
+</details>
 
 
 
