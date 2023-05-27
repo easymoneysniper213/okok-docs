@@ -31,7 +31,6 @@
 | 20     | 一个部门最多有5个资产管理员      | 创建的用户类型为资产管理员，但该部门的资产管理员过多，不符合规范                 |
 | 20     | 一个部门最多有550个用户          | 创建的用户类型为用户，但该部门的普通用户过多，不符合规范                         |
 
-
 <details>
  <summary>示例</summary>
  <details>
@@ -48,6 +47,7 @@
   "email" :""
 }
 ```
+
 </details>
 <details>
   <summary>响应</summary>
@@ -58,10 +58,9 @@
   "info":"Succeed",
 }
 ```
+
 </details>
 </details>
-
-
 
 ## 修改用户相关信息接口
 
@@ -100,6 +99,7 @@
   "lock":False,
 }
 ```
+
 </details>
 <details>
   <summary>响应</summary>
@@ -110,9 +110,9 @@
   "info":"Success",
 }
 ```
-</details>
-</details>
 
+</details>
+</details>
 
 ## 获取用户角色接口
 
@@ -152,9 +152,9 @@
   }
 }
 ```
-</details>
-</details>
 
+</details>
+</details>
 
 ## 获取全部用户列表接口
 
@@ -217,10 +217,9 @@
   ]
 }
 ```
+
 </details>
 </details>
-
-
 
 ## 用户更改自己的密码接口
 
@@ -254,6 +253,7 @@
   "newpassword":"abb"
 }
 ```
+
 </details>
 <details>
   <summary>响应</summary>
@@ -264,9 +264,9 @@
    "info":"Succeed",
 }
 ```
-</details>
-</details>
 
+</details>
+</details>
 
 ## 用户更改自己的邮箱接口
 
@@ -301,6 +301,7 @@
   "email":"xpy@163.com"
 }
 ```
+
 </details>
 <details>
   <summary>响应</summary>
@@ -311,9 +312,9 @@
    "info":"Succeed",
 }
 ```
-</details>
-</details>
 
+</details>
+</details>
 
 ## 获取同部门资产管理员接口
 
@@ -321,6 +322,43 @@
 
 `[GET] /api/asset_manager/{session}/{department_name}`
 
+此接口方法为GET，无请求参数
+
+**成功响应参数**
+
+| 参数 | 类型 | 说明                                   |
+| ---- | ---- | -------------------------------------- |
+| data | list | 为包含该部门的所有资产管理员信息的列表 |
+
+**失败响应状态**
+
+| 状态码 | 错误信息       | 说明                                    |
+| ------ | -------------- | --------------------------------------- |
+| 2      | 未找到目标部门 | 根据url路径传入的部门名称找不到对应部门 |
+
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{"code":0,
+ "data":[
+ {
+   "id":1,
+   "name":"liusn",
+ },
+ {
+   "id":2,
+   "name":"xpy",
+ },
+]
+}
+```
+
+
+</details>
 
 ## 获取同业务实体资产管理员接口
 
@@ -328,7 +366,42 @@
 
 `[GET] /api/asset_manager_entity/{session}/{entity_name}`
 
+此接口方法为GET，无请求参数
 
+**成功响应参数**
+
+| 参数 | 类型 | 说明                                       |
+| ---- | ---- | ------------------------------------------ |
+| data | list | 为包含该业务实体的所有资产管理员信息的列表 |
+
+**失败响应状态**
+
+| 状态码 | 错误信息           | 说明                                            |
+| ------ | ------------------ | ----------------------------------------------- |
+| 2      | 未找到目标业务实体 | 根据url路径传入的业务实体名称找不到对应业务实体 |
+
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{"code":0,
+ "data":[
+ {
+   "id":1,
+   "name":"liusn",
+ },
+ {
+   "id":2,
+   "name":"xpy",
+ },
+]
+}
+```
+
+</details>
 
 ## 管理员获取同业务实体全部用户接口
 
@@ -336,7 +409,56 @@
 
 `[GET] /api/user_entity/{session}/{entity_name}/{page}`
 
+此接口方法为GET，无请求参数
 
+**成功响应参数**
+
+| 参数 | 类型 | 说明                                 |
+| ---- | ---- | ------------------------------------ |
+| data | list | 为包含该业务实体的所有用户信息的列表 |
+
+**失败响应状态**
+
+| 状态码 | 错误信息             | 说明                                            |
+| ------ | -------------------- | ----------------------------------------------- |
+| 2      | 对应的业务实体不存在 | 根据url路径传入的业务实体名称找不到对应业务实体 |
+
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{
+  "code": 0,
+  "pages":1,
+  "data": [
+  {
+    "id":1,
+    "name": "example_user",
+    "password": "password123",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "character":1,
+    "lock":False,
+    "email" :"" 
+  },
+  {
+    "id": 2,
+    "name": "user2",
+    "password": "password123",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "character":1,
+    "lock":False, 
+    "email" :"" 
+  }
+  ]
+}
+```
+
+</details>
 
 ## 一级用户获取同业务实体全部用户接口
 
@@ -344,7 +466,49 @@
 
 `[GET] /api/user_entity4user/{session}/{page}`
 
+此接口方法为GET，无请求参数
 
+**成功响应参数**
+
+| 参数 | 类型 | 说明                                 |
+| ---- | ---- | ------------------------------------ |
+| data | list | 为包含该业务实体的所有用户信息的列表 |
+
+此接口除鉴权操作外无其他失败响应状态
+
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{
+  "code": 0,
+  "pages":1,
+  "data": [
+  {
+    "id":1,
+    "name": "example_user",
+    "password": "password123",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email" :"" 
+  },
+  {
+    "id": 2,
+    "name": "user2",
+    "password": "password123",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email" :"" 
+  }
+  ]
+}
+```
+
+
+</details>
 
 ## 用户获取个人信息接口
 
@@ -352,6 +516,44 @@
 
 `[GET] /api/cur_entity/{session}/{page}`
 
+此接口方法为GET，无请求参数
+
+**成功响应参数**
+
+| 参数           | 类型 | 说明                                 |
+| -------------- | ---- | ------------------------------------ |
+| entityName     | str  | 用户属于的业务实体的名字(若无则为"") |
+| departmentName | str  | 用户属于的部门的名字(若无则为"")     |
+| name           | str  | 用户的名字                           |
+| feishu_name    | str  | 用户的飞书用户名                     |
+| feishu_phone   | str  | 用户的飞书电话号码                   |
+| email          | str  | 用户的锁定状态                       |
+| lock           | int  | 用户的锁定状态                       |
+
+此接口除鉴权操作外无其他失败响应状态
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{
+  "code": 0,
+  "data": 
+  {
+    "name": "example_user",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email":"",
+    "lock":0,
+    "feishu_name":"xpy",
+    "feishu_phone":114514
+  }
+}
+```
+
+</details>
 
 ## 管理员获取同部门下全部用户接口
 
@@ -359,7 +561,57 @@
 
 `[GET] /api/user_department/{session}/{department_name}/{page}`
 
+此接口方法为GET，无请求参数
 
+**成功响应参数**
+
+| 参数 | 类型 | 说明                             |
+| ---- | ---- | -------------------------------- |
+| data | list | 为包含该部门的所有用户信息的列表 |
+
+**失败响应状态**
+
+| 状态码 | 错误信息         | 说明                                  |
+| ------ | ---------------- | ------------------------------------- |
+| 2      | 对应的部门未找到 | 根据url路径中的部门名字找不到对应部门 |
+
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{
+  "code": 0,
+  "pages":1,
+  "data": [
+  {
+    "id":1,
+    "name": "example_user",
+    "password": "password123",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "character":1,
+    "lock":False,
+    "email" :"" 
+  },
+  {
+    "id": 2,
+    "name": "user2",
+    "password": "password123",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "character":1,
+    "lock":False, 
+    "email" :"" 
+  }
+  ]
+}
+```
+
+
+</details>
 
 ## 一级用户获取同部门下全部用户接口
 
@@ -367,9 +619,97 @@
 
 `[GET] /api/user_department_2/{session}/{department_name}`
 
+此接口方法为GET，无请求参数
+
+**成功响应参数**
+
+| 参数 | 类型 | 说明                             |
+| ---- | ---- | -------------------------------- |
+| data | list | 为包含该部门的所有用户信息的列表 |
+
+**失败响应状态**
+
+| 状态码 | 错误信息         | 说明                                  |
+| ------ | ---------------- | ------------------------------------- |
+| 2      | 对应的部门未找到 | 根据url路径中的部门名字找不到对应部门 |
+
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{
+  "code": 0,
+  "data": [
+  {
+    "id":1,
+    "name": "example_user",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email" :""
+  },
+  {
+    "id": 2,
+    "name": "user2",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email" :""
+  }
+  ]
+}
+```
+
+</details>
 
 ## 资产管理员获取某部门下全部资产管理员接口
 
 **接口描述**：此接口用于资产管理员获取某部门下全部资产管理员
 
 `[GET] /api/managers_department/{session}/{department_name}`
+
+此接口方法为GET，无请求参数
+
+**成功响应参数**
+
+| 参数 | 类型 | 说明                                   |
+| ---- | ---- | -------------------------------------- |
+| data | list | 为包含该部门的所有资产管理员信息的列表 |
+
+**失败响应状态**
+
+| 状态码 | 错误信息         | 说明                                  |
+| ------ | ---------------- | ------------------------------------- |
+| 2      | 对应的部门未找到 | 根据url路径中的部门名字找不到对应部门 |
+
+<details>
+ <summary>示例</summary>
+
+响应
+
+```json
+{
+  "code": 0,
+  "data": [
+  {
+    "id":1,
+    "name": "example_user",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email" :"",
+    "lock":0,
+  },
+  {
+    "id": 2,
+    "name": "user2",
+    "entityName" : "aba",
+    "departmentName":"tsinghua",
+    "email" :"",
+    "lock":0,
+  }
+  ]
+}
+```
+
+</details>
