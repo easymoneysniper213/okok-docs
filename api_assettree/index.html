@@ -15,7 +15,7 @@
         <link rel="next" href="../api_journal/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
@@ -871,18 +871,453 @@
 <h2 id="_1">创建资产树节点接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员创建资产树节点</p>
 <p><code>[POST] /api/asset_tree/{session}</code></p>
+<p><strong>请求参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parent</td>
+<td>int</td>
+<td>该资产层级树节点父节点的id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>该资产层级树节点的名称</td>
+</tr>
+<tr>
+<td>department</td>
+<td>str</td>
+<td>该资产层级树节点挂载的部门名</td>
+</tr>
+</tbody>
+</table>
+<p><strong>成功响应参数</strong></p>
+<p>无成功响应参数，接口调用成功则创建资产树节点成功，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>指定名称的父节点不存在</td>
+<td>指定名称的父节点不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>无法在此处创建一个资产分类</td>
+<td>无法在此处创建一个资产分类</td>
+</tr>
+<tr>
+<td>2</td>
+<td>该名称的部门不存在</td>
+<td>输入的部门名称对应部门不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>同名资产分类已存在</td>
+<td>同名资产分类已存在</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+
+
+<pre><code class="language-json">{
+  &quot;name&quot;:&quot;aba&quot;,
+  &quot;parent&quot;:&quot;a&quot;,
+  &quot;department&quot;:&quot;b&quot;
+}
+</code></pre>
+
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Success&quot;,
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_2">获取某个资产树节点的子节点接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取某个特定资产树节点的全部子节点</p>
 <p><code>[GET] /api/sub_asset_tree/{session}/{asset_tree_node_name}</code></p>
+<p><strong>请求参数</strong></p>
+<p>无</p>
+<p>url中的asset_tree_node_name表示特定的资产树节点，下面操作即为获取其子节点</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>资产层级树子节点的名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>指定名称的父节点不存在</td>
+<td>指定名称的父节点不存在</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+无
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0
+  &quot;data&quot;:[
+    {
+      &quot;name&quot;:&quot;电子产品&quot;,
+    },
+    {
+      &quot;name&quot;:&quot;钢制品&quot;,
+    },
+    ...
+    ]
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_3">删除某个资产树节点接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员删除某个特定资产树节点</p>
 <p><code>[DELETE] /api/sub_asset_tree/{session}/{asset_tree_node_name}</code></p>
+<p><strong>请求参数</strong></p>
+<p>无</p>
+<p>url中的asset_tree_node_name表示特定的资产树节点，下面操作即为删除该节点</p>
+<p><strong>成功响应参数</strong></p>
+<p>无成功响应参数，接口调用成功则删除资产树节点成功，返回Succeed</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>44</td>
+<td>该资产树节点不可以删除</td>
+<td>"默认分类"、“数量型资产”、“条目型资产”这三个资产分类树节点不可删除</td>
+</tr>
+<tr>
+<td>2</td>
+<td>指定名称的资产分类不存在</td>
+<td>指定名称的资产分类不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>你不可以删除一个非叶子的资产分类</td>
+<td>规定不可以删除一个非叶子的资产分类</td>
+</tr>
+<tr>
+<td>2</td>
+<td>你不可以删除一个已经含有资产的资产分类</td>
+<td>规定不可以删除一个已经含有资产的资产分类</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+无
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;info&quot;:&quot;Success&quot;,
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_4">获取某个部门资产树根节点接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取该部门资产树根节点（即“默认分类”）</p>
 <p><code>[GET] /api/asset_tree_root/{session/{department_name}</code></p>
+<p><strong>请求参数</strong></p>
+<p>无</p>
+<p>url中的department_name表示部门名称，下面操作即为获取其资产分类树的根节点</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>该部门资产层级树根节点的名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>该名称的部门不存在</td>
+<td>指定名称的部门不存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td>资产分类不存在</td>
+<td>该部门作为根节点的资产分类不存在</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+无
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;data&quot;:
+  {
+    &quot;name&quot;:&quot;默认分类&quot;,
+  },
+}
+</code></pre>
+
+</details>
+</details>
+
 <h2 id="_5">获取某个资产树节点下所有资产的接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取某个特定资产树节点下所有资产</p>
 <p><code>[GET] /api/asset_tree_node/{session}/{asset_tree_node_name}/{page}/{expire}</code></p>
+<p><strong>请求参数</strong></p>
+<p>无</p>
+<p>url中的asset_tree_node_name表示资产分类树节点名称，下面操作即为获取该资产分类树节点下的所有资产；</p>
+<p>url中的expire表示资产是否被清退，用于指定资产清退状态；</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>该资产的id</td>
+</tr>
+<tr>
+<td>parentName</td>
+<td>str</td>
+<td>该资产父资产的名称</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>该资产的名称</td>
+</tr>
+<tr>
+<td>assetClass</td>
+<td>int</td>
+<td>该资产的类型(数量型或条目型)</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>str</td>
+<td>该资产的挂账人名称</td>
+</tr>
+<tr>
+<td>price</td>
+<td>double</td>
+<td>该资产的现价值</td>
+</tr>
+<tr>
+<td>description</td>
+<td>str</td>
+<td>该资产的描述</td>
+</tr>
+<tr>
+<td>expire</td>
+<td>str</td>
+<td>该资产是否被清退</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>数量型资产的数量</td>
+</tr>
+<tr>
+<td>assetTree</td>
+<td>str</td>
+<td>该资产挂载的资产分类树节点</td>
+</tr>
+<tr>
+<td>departmentName</td>
+<td>str</td>
+<td>该资产挂载的部门名</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime</td>
+<td>该资产的创建日期</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>int</td>
+<td>该资产距离到期的时间</td>
+</tr>
+<tr>
+<td>initial_price</td>
+<td>double</td>
+<td>该资产的初始价值</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>该资产目前的状态</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>指定名称的资产分类不存在</td>
+<td>该部门下指定名称的资产分类不存在</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+ <details>
+  <summary>请求</summary>
+无
+</details>
+<details>
+  <summary>响应</summary>
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0,
+  &quot;data&quot;:[
+    {
+  &quot;id&quot;:1,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aaa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+   &quot;status&quot;:1,
+  },
+  {
+  &quot;id&quot;:2,
+  &quot;parentName&quot;:&quot;a&quot;, 
+  &quot;name&quot;:&quot;aa&quot;,
+  &quot;assetClass&quot;:1,
+  &quot;userName&quot;:&quot;xxx&quot;,
+  &quot;price&quot;:1.0,
+  &quot;description&quot;:&quot;&quot;,
+  &quot;position&quot;:&quot;&quot;,
+  &quot;expire&quot;:0,
+  &quot;count&quot;:1,
+  &quot;assetTree&quot;:&quot;all_asset&quot;,
+  &quot;departmentName&quot;:&quot;y&quot;,
+  &quot;create_time&quot;:&quot;2020-12-11&quot;,
+  &quot;deadline&quot;:5,
+  &quot;initial_price&quot;:2.0,
+  &quot;status&quot;:1,
+  }
+  ]
+}
+</code></pre>
+
+</details>
+</details>
 
 
 
@@ -918,7 +1353,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
       
     
   </body>
