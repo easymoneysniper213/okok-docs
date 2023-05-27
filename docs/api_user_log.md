@@ -38,6 +38,7 @@
     }
 
 ```
+
 </details>
 <details>
   <summary>响应</summary>
@@ -53,9 +54,9 @@
     }
 
 ```
-</details>
-</details>
 
+</details>
+</details>
 
 ## 用户登出接口
 
@@ -89,6 +90,7 @@
 }
 
 ```
+
 </details>
 <details>
   <summary>响应</summary>
@@ -100,6 +102,6 @@
 }
 
 ```
-</details>
-</details>
 
+</details>
+</details>
