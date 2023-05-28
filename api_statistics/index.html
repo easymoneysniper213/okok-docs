@@ -517,27 +517,20 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    获取部门下全部资产数量信息接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     获取部门下全部资产状态信息接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     获取资产价值曲线接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     获取部门下全部资产数目和价值变化曲线接口
   </a>
   
@@ -811,27 +804,20 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    获取部门下全部资产数量信息接口
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     获取部门下全部资产状态信息接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     获取资产价值曲线接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     获取部门下全部资产数目和价值变化曲线接口
   </a>
   
@@ -854,18 +840,252 @@
 
   <h1>资产统计模块</h1>
 
-<h2 id="_1">获取部门下全部资产数量信息接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员获取该部门下全部资产数量信息</p>
-<p><code>[GET] /count_department_asset/{session}</code></p>
-<h2 id="_2">获取部门下全部资产状态信息接口</h2>
+<h2 id="_1">获取部门下全部资产状态信息接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取该部门下全部资产状态信息</p>
 <p><code>[GET] /count_status_asset/{session}</code></p>
-<h2 id="_3">获取资产价值曲线接口</h2>
-<p><strong>接口描述</strong>：此接口用于资产管理员获取某个特定资产的资产价值曲线</p>
+<p>此接口方法为GET，故无请求参数</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>部门下全部资产状态信息列表，列表共8项，前4项代表条目型资产状态，后4项代表数量型资产状态</td>
+</tr>
+</tbody>
+</table>
+<p>此接口除鉴权操作外无其他失败响应状态</p>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0
+  &quot;data&quot;:
+  [
+    {
+      &quot;type&quot;: &quot;expire&quot;,
+      &quot;count&quot;: 1, 
+    },
+    {
+      &quot;type&quot;: &quot;idle&quot;,
+      &quot;count&quot;: 2, 
+    },
+    {
+      &quot;type&quot;: &quot;use&quot;,
+      &quot;count&quot;: 3, 
+    },
+    {
+      &quot;type&quot;: &quot;maintain&quot;,
+      &quot;count&quot;: 4, 
+    },
+    {
+      &quot;type&quot;: &quot;expire&quot;,
+      &quot;count&quot;: 1, 
+    },
+    {
+      &quot;type&quot;: &quot;idle&quot;,
+      &quot;count&quot;: 2, 
+    },
+    {
+      &quot;type&quot;: &quot;use&quot;,
+      &quot;count&quot;: 3, 
+    },
+    {
+      &quot;type&quot;: &quot;maintain&quot;,
+      &quot;count&quot;: 4, 
+    },
+   ]
+}
+</code></pre>
+
+
+</details>
+
+<h2 id="_2">获取资产价值曲线接口</h2>
+<p><strong>接口描述</strong>：本接口用于获取某一资产的信息变化情况</p>
 <p><code>[GET] /info_curve/{session}/{asset_id}/{visible_type}</code></p>
-<h2 id="_4">获取部门下全部资产数目和价值变化曲线接口</h2>
+<p>此接口方法为GET，故无请求参数，url路径中 <code>visible_type</code>为1、2、3时分别表示获取近7天、近30天、全部时间的信息</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>一个包含资产指定时间段信息的列表</td>
+</tr>
+</tbody>
+</table>
+<p><code>cur_price</code>为该时刻价格，<code>cur_status</code>为该时刻状态，<code>cur_count</code>为该时刻数量，<code>cur_time</code>为时刻</p>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>检测到错误可见类型</td>
+<td><code>visible_type</code>不为1、2、3中之一</td>
+</tr>
+<tr>
+<td>4</td>
+<td>未找到目标资产</td>
+<td>根据url路径中的id找不到对应资产</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0
+  &quot;data&quot;:[
+  {
+    &quot;cur_price&quot;: 11.00,
+    &quot;cur_status&quot;: 1,
+    &quot;cur_count&quot;: 5,
+    &quot;cur_time&quot;: xx,
+  },
+  {
+    &quot;cur_price&quot;: 11.00,
+    &quot;cur_status&quot;: 1,
+    &quot;cur_count&quot;: 5,
+    &quot;cur_time&quot;: xx,
+  },
+  ......
+  ]
+}
+</code></pre>
+
+
+</details>
+
+<h2 id="_3">获取部门下全部资产数目和价值变化曲线接口</h2>
 <p><strong>接口描述</strong>：此接口用于资产管理员获取部门下全部资产数目和价值变化曲线</p>
 <p><code>[GET] /count_price_curve/{session}/{visible_type}</code></p>
+<p>此接口方法为GET，故无请求参数，url路径中 <code>visible_type</code>为1、2、3时分别表示获取近7天、近30天、全部时间的信息</p>
+<p><strong>成功响应参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_item</td>
+<td>list</td>
+<td>条目型资产的变化列表</td>
+</tr>
+<tr>
+<td>data_amount</td>
+<td>list</td>
+<td>数量型资产的变化列表</td>
+</tr>
+<tr>
+<td>data_total</td>
+<td>list</td>
+<td>全部资产的变化列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失败响应状态</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>错误信息</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>检测到错误可见类型</td>
+<td><code>visible_type</code>不为1、2、3中之一</td>
+</tr>
+</tbody>
+</table>
+<details>
+ <summary>示例</summary>
+
+响应
+
+
+<pre><code class="language-json">{
+  &quot;code&quot;:0
+  &quot;data_item&quot;:[
+  {
+    &quot;cur_count&quot;: 123123,
+    &quot;cur_price&quot;: 200019.51
+    &quot;cur_time&quot;:xx,
+  },
+  {
+    &quot;cur_count&quot;: 123123,
+    &quot;cur_price&quot;: 200019.51,
+    &quot;cur_time&quot;:xx,
+  },
+  ......
+  ]
+  &quot;data_amount&quot;:[
+  {
+    &quot;cur_count&quot;: 123123123,
+    &quot;cur_price&quot;: 529.00
+    &quot;cur_time&quot;:xx,
+  },
+  {
+    &quot;cur_count&quot;: 123123123,
+    &quot;cur_price&quot;: 529.00
+    &quot;cur_time&quot;:xx,
+  },
+  ......
+  ]
+  &quot;data_total&quot;:[
+  {
+    &quot;cur_count&quot;: 123246246,
+    &quot;cur_price&quot;: 200548.51,
+    &quot;cur_time&quot;:xx,
+  },
+  {
+    &quot;cur_count&quot;: 123246246,
+    &quot;cur_price&quot;: 200548.51
+    &quot;cur_time&quot;:xx,
+  },
+  ......
+  ]
+}
+</code></pre>
+
+
+
+
+</details>
 
 
 
